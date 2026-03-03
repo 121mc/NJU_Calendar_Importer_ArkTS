@@ -120,7 +120,7 @@ export class NjuScheduleService {
     }
     eligible.sort((a: Record<string, Object>, b: Record<string, Object>) => {
       return NjuScheduleService.parseDateTime(NjuScheduleService.stringValue(a, 'KBKFRQ')).getTime() -
-        NjuScheduleService.parseDateTime(NjuScheduleService.stringValue(b, 'KBKFRQ')).getTime();
+      NjuScheduleService.parseDateTime(NjuScheduleService.stringValue(b, 'KBKFRQ')).getTime();
     });
     let currentSemester = eligible[eligible.length - 1];
     let semesterId = NjuScheduleService.stringValue(currentSemester, 'XNXQDM');
@@ -191,7 +191,7 @@ export class NjuScheduleService {
     }
     let lower = text.toLowerCase();
     if (lower.startsWith('<!doctype html') || lower.startsWith('<html') || lower.includes('<body') || lower.includes('<head')) {
-      let preview = text.replace(/\r?\n/g, ' ');
+      let preview = text.replace(/[\r\n]+/g, ' ');
       throw new Error(`${apiName} 返回的是 HTML 页面，不是 JSON。通常表示登录态失效或接口被重定向。前120字符：${preview.substring(0, Math.min(preview.length, 120))}`);
     }
     return JSON.parse(text) as Record<string, Object>;
@@ -286,7 +286,9 @@ export class NjuScheduleService {
     let weekBitmap = NjuScheduleService.stringValue(row, 'SKZC');
     let title = NjuScheduleService.stringValue(row, 'KCM', '未命名课程');
     let location = NjuScheduleService.stringValue(row, 'JASMC');
-    let teacher = NjuScheduleService.stringValue(row, 'JSHS') || NjuScheduleService.stringValue(row, 'SKJS');
+    let teacher = NjuScheduleService.sanitizeTeacherText(
+      NjuScheduleService.stringValue(row, 'JSHS') || NjuScheduleService.stringValue(row, 'SKJS')
+    );
     let className = NjuScheduleService.stringValue(row, 'JXBMC');
     let studentClasses = NjuScheduleService.stringValue(row, 'SKBJ');
     let campus = NjuScheduleService.stringValue(row, 'XXXQDM_DISPLAY');
@@ -341,7 +343,9 @@ export class NjuScheduleService {
 
     let title = `${NjuScheduleService.stringValue(row, 'KCM', '未命名课程')}期末考试`;
     let location = NjuScheduleService.stringValue(row, 'JASMC');
-    let teacher = NjuScheduleService.stringValue(row, 'ZJJSXM');
+    let teacher = NjuScheduleService.sanitizeTeacherText(
+      NjuScheduleService.stringValue(row, 'ZJJSXM')
+    );
 
     let event = new CourseEvent();
     event.title = title;
@@ -361,7 +365,9 @@ export class NjuScheduleService {
     let courseName = NjuScheduleService.stringValue(row, 'KCMC');
     let title = courseName.length > 0 ? courseName : NjuScheduleService.stringValue(row, 'BJMC', '未命名课程');
     let location = NjuScheduleService.stringValue(row, 'JASMC');
-    let teacher = NjuScheduleService.stringValue(row, 'JSXM');
+    let teacher = NjuScheduleService.sanitizeTeacherText(
+      NjuScheduleService.stringValue(row, 'JSXM')
+    );
     let remark = NjuScheduleService.stringValue(row, 'XKBZ');
     let className = NjuScheduleService.stringValue(row, 'BJMC');
 
@@ -387,6 +393,19 @@ export class NjuScheduleService {
       result.push(event);
     }
     return result;
+  }
+
+  private static sanitizeTeacherText(text: string): string {
+    let value = String(text ?? '');
+
+    value = value.replace(/(^|[^0-9])(1\d{10})(?=[^0-9]|$)/g, '$1');
+
+    value = value
+      .replace(/[，,;；|/]+/g, ' ')
+      .replace(/\s+/g, ' ')
+      .trim();
+
+    return value;
   }
 
   private static buildImportKey(prefix: string, title: string, startTime: number, endTime: number, location: string): string {

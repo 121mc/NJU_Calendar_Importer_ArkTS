@@ -13,25 +13,29 @@ export class CalendarSyncService {
       throw new Error('未获得日历权限。');
     }
 
-    let mgr = calendarManager.getCalendarManager(context);
-    let calendars = await mgr.getAllCalendars();
-    let result: CalendarOption[] = [];
-    for (let i = 0; i < calendars.length; i++) {
-      let calendar = calendars[i];
-      let option = new CalendarOption();
-      option.id = String(i);
-      try {
-        let account = calendar.getAccount();
-        option.name = String(account.name ?? `系统日历 ${i + 1}`);
-        option.subTitle = String(account.type ?? '');
-      } catch (error) {
-        option.name = `系统日历 ${i + 1}`;
-        option.subTitle = '';
+    try {
+      let mgr = calendarManager.getCalendarManager(context);
+      let calendars = await mgr.getAllCalendars();
+      let result: CalendarOption[] = [];
+      for (let i = 0; i < calendars.length; i++) {
+        let calendar = calendars[i];
+        let option = new CalendarOption();
+        option.id = String(i);
+        try {
+          let account = calendar.getAccount();
+          option.name = String(account.name ?? `系统日历 ${i + 1}`);
+          option.subTitle = String(account.type ?? '');
+        } catch (error) {
+          option.name = `系统日历 ${i + 1}`;
+          option.subTitle = '';
+        }
+        option.calendar = calendar;
+        result.push(option);
       }
-      option.calendar = calendar;
-      result.push(option);
+      return result;
+    } catch (error) {
+      throw new Error(`读取系统日历列表失败：${CalendarSyncService.errorToMessage(error)}`);
     }
-    return result;
   }
 
   static async createOrGetAppCalendar(context: common.UIAbilityContext): Promise<CalendarOption> {
@@ -40,36 +44,41 @@ export class CalendarSyncService {
       throw new Error('未获得日历权限。');
     }
 
-    let mgr = calendarManager.getCalendarManager(context);
-    let calendars = await mgr.getAllCalendars();
-    for (let i = 0; i < calendars.length; i++) {
-      let calendar = calendars[i];
-      try {
-        let account = calendar.getAccount();
-        if (String(account.name ?? '') === CalendarSyncService.appCalendarName) {
-          let option = new CalendarOption();
-          option.id = `app_${i}`;
-          option.name = String(account.name ?? CalendarSyncService.appCalendarName);
-          option.subTitle = String(account.type ?? 'LOCAL');
-          option.calendar = calendar;
-          return option;
+    try {
+      let mgr = calendarManager.getCalendarManager(context);
+      let calendars = await mgr.getAllCalendars();
+      for (let i = 0; i < calendars.length; i++) {
+        let calendar = calendars[i];
+        try {
+          let account = calendar.getAccount();
+          if (String(account.name ?? '') === CalendarSyncService.appCalendarName) {
+            let option = new CalendarOption();
+            option.id = `app_${i}`;
+            option.name = String(account.name ?? CalendarSyncService.appCalendarName);
+            option.subTitle = String(account.type ?? 'LOCAL');
+            option.calendar = calendar;
+            return option;
+          }
+        } catch (error) {
+          console.error(`Read calendar account failed: ${CalendarSyncService.errorToMessage(error)}`);
         }
-      } catch (error) {
-        console.error(`Read calendar account failed: ${JSON.stringify(error)}`);
       }
-    }
 
-    let account: calendarManager.CalendarAccount = {
-      name: CalendarSyncService.appCalendarName,
-      type: calendarManager.CalendarType.LOCAL,
-    };
-    let created = await mgr.createCalendar(account);
-    let option = new CalendarOption();
-    option.id = 'app_created';
-    option.name = CalendarSyncService.appCalendarName;
-    option.subTitle = 'LOCAL';
-    option.calendar = created;
-    return option;
+      let account: calendarManager.CalendarAccount = {
+        name: CalendarSyncService.appCalendarName,
+        type: calendarManager.CalendarType.LOCAL,
+      };
+      let created = await mgr.createCalendar(account);
+
+      let option = new CalendarOption();
+      option.id = 'app_created';
+      option.name = CalendarSyncService.appCalendarName;
+      option.subTitle = 'LOCAL';
+      option.calendar = created;
+      return option;
+    } catch (error) {
+      throw new Error(`创建或获取应用日历失败：${CalendarSyncService.errorToMessage(error)}`);
+    }
   }
 
   static async syncEvents(calendar: calendarManager.Calendar, bundle: ScheduleBundle, overwritePreviousImports: boolean): Promise<SyncResult> {
@@ -97,16 +106,18 @@ export class CalendarSyncService {
         result.skipped += 1;
         continue;
       }
+
       let event: calendarManager.Event = {
         type: calendarManager.EventType.NORMAL,
         title: item.title,
         description: item.description,
         startTime: item.startTime,
         endTime: item.endTime,
-        location: item.location,
+        location: CalendarSyncService.buildEventLocation(item.location),
         identifier: item.importKey,
         reminderTime: [30],
       };
+
       await calendar.addEvent(event);
       result.created += 1;
     }
@@ -130,5 +141,22 @@ export class CalendarSyncService {
       }
     }
     return deleted;
+  }
+
+  private static buildEventLocation(text: string): calendarManager.Location {
+    let value = String(text ?? '').trim();
+    return {
+      location: value,
+      latitude: 0,
+      longitude: 0
+    };
+  }
+
+  private static errorToMessage(error: Object): string {
+    try {
+      return JSON.stringify(error);
+    } catch (e) {
+      return String(error);
+    }
   }
 }
