@@ -1,0 +1,20 @@
+{
+  "string": [
+    {
+      "name": "EntryAbility_desc",
+      "value": "南京大学课表导入鸿蒙版"
+    },
+    {
+      "name": "EntryAbility_label",
+      "value": "南大课表导入日历"
+    },
+    {
+      "name": "module_desc",
+      "value": "entry module"
+    },
+    {
+      "name": "calendar_permission_reason",
+      "value": "用于读取系统日历列表，并把课表与考试安排写入系统日历。"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "HVIGOR": {
+    "IS_INCREMENTAL": true,
+    "IS_DAEMON": true,
+    "IS_PARALLEL": true,
+    "IS_HVIGORFILE_TYPE_CHECK": false,
+    "TASK_TIME": {},
+    "APIS": [],
+    "CONFIG_EXPERIMENT": {
+      "ENABLE_MODULE_SKIP": false,
+      "ENABLE_CPP_FUNCTION_LEVEL_INCREMENTAL": false
+    },
+    "CONFIG_PROPERTIES": {},
+    "BUILD_ID": "202603031939491690",
+    "ERROR_MESSAGE": [
+      {
+        "CODE": "00303038",
+        "MESSAGE": "%s",
+        "SOLUTIONS": [
+          "Please check the following fields. \r\n {\n  instancePath: 'app.products[0]',\n  keyword: 'required',\n  params: { missingProperty: 'compatibleSdkVersion' },\n  message: \"must have required property 'compatibleSdkVersion'\",\n  location: 'D:/NJU_Calendar_Importer_ArkTS/build-profile.json5:4:8'\n} \r\n"
+        ],
+        "TIMESTAMP": "1772537990552"
+      }
+    ],
+    "TOTAL_TIME": 1407002300
+  }
+}
