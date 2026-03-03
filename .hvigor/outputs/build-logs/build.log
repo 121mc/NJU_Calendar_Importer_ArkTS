@@ -103,3 +103,120 @@ Error Message: Schema validate failed, at file: D:\NJU_Calendar_Importer_ArkTS\b
 [2026-03-03T19:39:50.604] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
 [2026-03-03T19:39:50.604] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
 [2026-03-03T19:46:11.405] [DEBUG] debug-file - session manager: set active socket. socketId=qHUZ01p7m11oEjoKAAAD
+[2026-03-03T19:46:11.415] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-03T19:46:11.418] [DEBUG] debug-file - Workers' log level updated to INFO
+[2026-03-03T19:46:11.421] [DEBUG] debug-file - Hvigor init with startParameters:{
+  hvigorfileTypeCheck: false,
+  parallelExecution: true,
+  incrementalExecution: true,
+  printStackTrace: true,
+  daemon: true,
+  analyze: 0,
+  logLevel: Level { level: 20000, levelStr: 'INFO', colour: 'green' },
+  optimizationStrategy: 'memory',
+  hotCompile: undefined,
+  hotReloadBuild: undefined,
+  customizedParam: undefined
+}
+[2026-03-03T19:46:11.422] [DEBUG] debug-file - Since current hvigor version 6.22.3 differs from last hvigor version 
+      undefined, delete file-cache.json and task-cache.json.
+[2026-03-03T19:46:11.423] [DEBUG] debug-file - Cache service initialization finished in 2 ms 
+[2026-03-03T19:46:11.424] [DEBUG] debug-file - hvigorfile, resolving D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+[2026-03-03T19:46:11.429] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2026-03-03T19:46:11.429] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2026-03-03T19:46:11.429] [DEBUG] debug-file - Starting plugin build process
+[2026-03-03T19:46:11.429] [DEBUG] debug-file - App plugin prepare start...
+[2026-03-03T19:46:11.429] [DEBUG] debug-file - App plugin prepare end...
+[2026-03-03T19:46:11.429] [DEBUG] debug-file - App plugin creating...
+[2026-03-03T19:46:11.436] [DEBUG] debug-file - App plugin register hook start...
+[2026-03-03T19:46:11.436] [DEBUG] debug-file - App plugin register hook end...
+[2026-03-03T19:46:11.436] [DEBUG] debug-file - Plugin build process completed
+[2026-03-03T19:46:11.436] [DEBUG] debug-file - Start initialize project's product build option map with build mode debug.
+[2026-03-03T19:46:11.436] [DEBUG] debug-file - Picking option from product 'default' with build mode 'debug'.
+[2026-03-03T19:46:11.437] [DEBUG] debug-file - Product 'default' build option initialized
+[2026-03-03T19:46:11.437] [DEBUG] debug-file - End initialize project's product build option map with build mode 'debug'.
+[2026-03-03T19:46:11.438] [DEBUG] debug-file - Obtain build option for product 'default'in this build.
+[2026-03-03T19:46:11.439] [DEBUG] debug-file - No signingConfig found, initRemoteHspCache failed.
+[2026-03-03T19:46:11.441] [DEBUG] debug-file - Local scan or download HarmonyOS sdk components toolchains,ets,js,native,previewer
+[2026-03-03T19:46:11.443] [DEBUG] debug-file - Local scan or download hmscore sdk components toolchains,ets,native
+[2026-03-03T19:46:11.444] [DEBUG] debug-file - Start recording SDK configuration permission data.
+[2026-03-03T19:46:11.466] [DEBUG] debug-file - Sdk init in 26 ms 
+[2026-03-03T19:46:11.469] [DEBUG] debug-file - Project task initialization takes 3 ms 
+[2026-03-03T19:46:11.469] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2026-03-03T19:46:11.469] [DEBUG] debug-file - hvigorfile, no custom plugins were found in D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+[2026-03-03T19:46:11.469] [DEBUG] debug-file - hvigorfile, resolve finished D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+[2026-03-03T19:46:11.470] [DEBUG] debug-file - hvigorfile, resolving D:\NJU_Calendar_Importer_ArkTS\entry\hvigorfile.ts
+[2026-03-03T19:46:11.473] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2026-03-03T19:46:11.473] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2026-03-03T19:46:11.473] [DEBUG] debug-file - Starting plugin build process
+[2026-03-03T19:46:11.473] [DEBUG] debug-file - Hap plugin creating...
+[2026-03-03T19:46:11.474] [DEBUG] debug-file - failed to load cangjie to dynamically generate schemas: Error: Cannot find module '@ohos/cangjie-build-support/index'
+Require stack:
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\hooks\cangjie-register.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\strategy\stage-init-strategy.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\builder\abstract-plugin-builder.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\builder\app-plugin-builder.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\factory\plugin-factory.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\index.js
+- D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\internal\lifecycle\configuration.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\boot\index.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\daemon\cluster\worker-process-lifecycle.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\daemon\process\daemon-process-boot-script.js
+[2026-03-03T19:46:11.482] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2026-03-03T19:46:11.482] [DEBUG] debug-file - Target 'default' config initialized
+[2026-03-03T19:46:11.482] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2026-03-03T19:46:11.482] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2026-03-03T19:46:11.482] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=release
+[2026-03-03T19:46:11.482] [DEBUG] debug-file - Target 'default' config initialized
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - Target 'default' config initialized
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2026-03-03T19:46:11.483] [DEBUG] debug-file - Obtain build option for module 'entry' target 'default'in this build.
+[2026-03-03T19:46:11.486] [DEBUG] debug-file - Module entry task initialization takes 3 ms 
+[2026-03-03T19:46:11.487] [DEBUG] debug-file - Hap plugin register hook start...
+[2026-03-03T19:46:11.487] [DEBUG] debug-file - Hap plugin register hook end...
+[2026-03-03T19:46:11.487] [DEBUG] debug-file - Plugin build process completed
+[2026-03-03T19:46:11.487] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2026-03-03T19:46:11.487] [DEBUG] debug-file - hvigorfile, no custom plugins were found in D:\NJU_Calendar_Importer_ArkTS\entry\hvigorfile.ts
+[2026-03-03T19:46:11.487] [DEBUG] debug-file - hvigorfile, resolve finished D:\NJU_Calendar_Importer_ArkTS\entry\hvigorfile.ts
+[2026-03-03T19:46:11.536] [DEBUG] debug-file - hvigorfile, resolve hvigorfile dependencies in 50 ms 
+[2026-03-03T19:46:11.537] [DEBUG] debug-file - project has submodules:entry
+[2026-03-03T19:46:11.538] [DEBUG] debug-file - start to load updatedOhPackageInfo to the disk
+[2026-03-03T19:46:11.541] [DEBUG] debug-file - load to the disk finished
+[2026-03-03T19:46:11.541] [DEBUG] debug-file - Start to initialize dependency information.
+[2026-03-03T19:46:11.543] [DEBUG] debug-file - Module NJU_Calendar_Importer_ArkTS Collected Dependency: 
+[2026-03-03T19:46:11.543] [DEBUG] debug-file - Module NJU_Calendar_Importer_ArkTS's total dependency: 0
+[2026-03-03T19:46:11.544] [DEBUG] debug-file - Start to initialize dependency information.
+[2026-03-03T19:46:11.545] [DEBUG] debug-file - Module entry Collected Dependency: 
+[2026-03-03T19:46:11.545] [DEBUG] debug-file - Module entry's total dependency: 0
+[2026-03-03T19:46:11.547] [DEBUG] debug-file - Configuration phase cost:125 ms 
+[2026-03-03T19:46:11.548] [DEBUG] debug-file - Configuration task cost before running: 130 ms 
+[2026-03-03T19:46:11.549] [DEBUG] debug-file - Executing task :entry:clean
+[2026-03-03T19:46:11.549] [DEBUG] debug-file - clean: Worker pool is inactive.
+[2026-03-03T19:46:11.550] [DEBUG] debug-file - entry : clean cost memory 0.08138275146484375
+[2026-03-03T19:46:11.550] [DEBUG] debug-file - runTaskFromQueue task cost before running: 131 ms 
+[2026-03-03T19:46:11.550] [INFO] debug-file - Finished :entry:clean... after 1 ms 
+[2026-03-03T19:46:11.550] [DEBUG] debug-file - Executing task ::clean
+[2026-03-03T19:46:11.550] [DEBUG] debug-file - clean: Worker pool is inactive.
+[2026-03-03T19:46:11.550] [DEBUG] debug-file - NJU_Calendar_Importer_ArkTS : clean cost memory 0.0254058837890625
+[2026-03-03T19:46:11.550] [DEBUG] debug-file - runTaskFromQueue task cost before running: 132 ms 
+[2026-03-03T19:46:11.551] [INFO] debug-file - Finished ::clean... after 1 ms 
+[2026-03-03T19:46:11.551] [DEBUG] debug-file - Executing task :entry:init
+[2026-03-03T19:46:11.551] [DEBUG] debug-file - entry : init cost memory 0.01488494873046875
+[2026-03-03T19:46:11.551] [DEBUG] debug-file - runTaskFromQueue task cost before running: 132 ms 
+[2026-03-03T19:46:11.551] [INFO] debug-file - Finished :entry:init... after 1 ms 
+[2026-03-03T19:46:11.551] [DEBUG] debug-file - Executing task ::init
+[2026-03-03T19:46:11.551] [DEBUG] debug-file - NJU_Calendar_Importer_ArkTS : init cost memory 0.01375579833984375
+[2026-03-03T19:46:11.551] [DEBUG] debug-file - runTaskFromQueue task cost before running: 133 ms 
+[2026-03-03T19:46:11.551] [INFO] debug-file - Finished ::init... after 1 ms 
+[2026-03-03T19:46:11.564] [DEBUG] debug-file - Obtain build option for module 'entry' target 'default'in this build.
+[2026-03-03T19:46:11.566] [DEBUG] debug-file - There's no busy workers and idle workers need cleanup.
+[2026-03-03T19:46:11.566] [DEBUG] debug-file - hvigor build process will be closed.
+[2026-03-03T19:46:11.571] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-03T19:46:11.571] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-03T19:46:11.653] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-03T19:46:11.653] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
