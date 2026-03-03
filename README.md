@@ -4,7 +4,7 @@
 
 本项目通过南京大学官方统一认证网页完成登录，自动拉取当前学期课表，并将课程与考试事件写入手机系统日历，方便在原生日历中统一查看和管理。
 
-基于 Flutter 开发的安卓版应用https://github.com/121mc/NJU_Calendar_Importer_ArkTS
+基于 Flutter 开发的安卓版应用https://github.com/121mc/NJU_Calendar_Importer_Flutter
 
 
 ## 项目说明
