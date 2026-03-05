@@ -1,9 +1,9 @@
 {
   "app": {
-    "bundleName": "com.mc.njucalendar",
-    "vendor": "mc",
+    "bundleName": "com.mc121.njucalendarimporter",
+    "vendor": "mc121",
     "versionCode": 1000000,
-    "versionName": "1.0.0",
+    "versionName": "1.2.0",
     "icon": "$media:app_icon",
     "label": "$string:app_name"
   }

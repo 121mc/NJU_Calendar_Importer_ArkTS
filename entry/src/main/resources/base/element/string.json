@@ -2,11 +2,11 @@
   "string": [
     {
       "name": "EntryAbility_desc",
-      "value": "南京大学课表导入鸿蒙版"
+      "value": "NJU课表导入"
     },
     {
       "name": "EntryAbility_label",
-      "value": "南大课表导入日历"
+      "value": "NJU课表导入"
     },
     {
       "name": "module_desc",

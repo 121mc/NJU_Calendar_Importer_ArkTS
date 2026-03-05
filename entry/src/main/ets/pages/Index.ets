@@ -1,6 +1,9 @@
 import { promptAction } from '@kit.ArkUI';
 import { webview } from '@kit.ArkWeb';
 import { common } from '@kit.AbilityKit';
+import router from '@ohos.router';
+import dataPreferences from '@ohos.data.preferences';
+
 import { CourseEvent, ScheduleBundle, SessionInfo, CalendarOption } from '../models/Models';
 import { SchoolType, SchoolTypeHelper } from '../models/SchoolType';
 import { AuthService } from '../services/AuthService';
@@ -8,11 +11,73 @@ import { HttpService } from '../services/HttpService';
 import { NjuScheduleService } from '../services/NjuScheduleService';
 import { CalendarSyncService } from '../services/CalendarSyncService';
 
+// 1. 定义隐私政策弹窗组件
+@CustomDialog
+struct PrivacyDialog {
+  controller: CustomDialogController
+  cancel: () => void = () => {}
+  confirm: () => void = () => {}
+  openPrivacyPage: () => void = () => {}
+
+  build() {
+    Column() {
+      Text('隐私政策与用户说明')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .margin({ top: 24, bottom: 12 })
+
+      Scroll() {
+        Text('欢迎使用“NJU课表导入”。\n\n在你使用本应用前，请先阅读并同意《隐私政策》。本应用主要提供南京大学课表导入系统日历功能。为实现该功能，本应用会在你主动操作时访问南京大学官方登录页面，并在获得你授权后申请日历权限，以便读取系统日历列表、写入课表事件以及清理本应用此前导入的数据。\n\n本应用不包含广告、不包含内购，也不会将你的账号、课表内容或日历数据上传到开发者自建服务器。相关数据仅在你的设备本地处理，并仅在访问南京大学官方系统时与学校服务器通信。')
+          .fontSize(15)
+          .fontColor('#666666')
+          .lineHeight(22)
+      }
+      .height(200) // 限制滚动区域高度
+      .margin({ left: 24, right: 24, bottom: 20 })
+
+      Row() {
+        Button('暂不同意')
+          .backgroundColor(Color.Transparent)
+          .fontColor('#999999')
+          .onClick(() => {
+            this.controller.close()
+            this.cancel()
+          })
+
+        Button('查看政策')
+          .backgroundColor(Color.Transparent)
+          .fontColor('#007DFF')
+          .onClick(() => {
+            this.openPrivacyPage()
+          })
+
+        Button('同意并继续')
+          .backgroundColor('#007DFF')
+          .fontColor(Color.White)
+          .onClick(() => {
+            this.controller.close()
+            this.confirm()
+          })
+      }
+      .width('100%')
+      .justifyContent(FlexAlign.SpaceEvenly)
+      .margin({ bottom: 16 })
+    }
+    .width('90%')
+    .backgroundColor(Color.White)
+    .borderRadius(16)
+  }
+}
+
 @Entry
 @Component
 struct Index {
   private context: common.UIAbilityContext | undefined = undefined;
   private loginWebController: webview.WebviewController = new webview.WebviewController();
+
+  // --- 隐私政策相关的状态 ---
+  @State privacyAccepted: boolean = false;
+  @State isReady: boolean = false;
 
   @State schoolType: SchoolType = SchoolType.UNDERGRAD;
   @State usernameHint: string = '';
@@ -31,6 +96,34 @@ struct Index {
   @State webCurrentUrl: string = '';
   @State loginHintText: string = '请在下方网页中完成统一认证登录，并确保已经真正进入课表应用首页。';
 
+  // 注册弹窗控制器
+  dialogController: CustomDialogController = new CustomDialogController({
+    builder: PrivacyDialog({
+      cancel: () => {
+        this.privacyAccepted = false;
+      },
+      confirm: async () => {
+        this.privacyAccepted = true;
+        // 存入底层缓存，下次不再弹窗
+        if (this.context) {
+          try {
+            let prefs = await dataPreferences.getPreferences(this.context, 'NjuSchedulePrefs');
+            await prefs.put('privacyAccepted', true);
+            await prefs.flush();
+          } catch (e) {
+            console.error('Save privacy state failed', e);
+          }
+        }
+        this.initSession(); // 同意后初始化登录态
+      },
+      openPrivacyPage: () => {
+        router.pushUrl({ url: 'pages/PrivacyPolicyPage' });
+      }
+    }),
+    autoCancel: false,
+    alignment: DialogAlignment.Center
+  })
+
   aboutToAppear(): void {
     this.context = this.getUIContext().getHostContext() as common.UIAbilityContext;
     try {
@@ -38,6 +131,30 @@ struct Index {
     } catch (error) {
       console.error(`setWebDebuggingAccess failed: ${JSON.stringify(error)}`);
     }
+
+    // 首先检查隐私协议状态
+    this.checkPrivacyStatus();
+  }
+
+  private async checkPrivacyStatus() {
+    if (this.context === undefined) return;
+    try {
+      let prefs = await dataPreferences.getPreferences(this.context, 'NjuSchedulePrefs');
+      this.privacyAccepted = (await prefs.get('privacyAccepted', false)) as boolean;
+    } catch (e) {
+      this.privacyAccepted = false;
+    }
+
+    this.isReady = true;
+
+    if (!this.privacyAccepted) {
+      this.dialogController.open();
+    } else {
+      this.initSession();
+    }
+  }
+
+  private initSession() {
     if (this.context !== undefined) {
       let restored = AuthService.restoreSession(this.context);
       if (restored !== undefined) {
@@ -220,84 +337,200 @@ struct Index {
     }
   }
 
-  build() {
-    Stack() {
-      Column() {
-        Row() {
-          Text('南大课表导入日历')
-            .fontSize(24)
-            .fontWeight(FontWeight.Bold)
-          Blank()
-          Text('HarmonyOS / ArkTS')
-            .fontSize(12)
-            .fontColor('#666666')
-        }
-        .width('100%')
-        .padding({ left: 16, right: 16, top: 16, bottom: 8 })
+  // === UI 构建区块 ===
 
-        Scroll() {
+  @Builder
+  PrivacyBlockedView() {
+    Column() {
+      // 占位图标
+      Image($r('app.media.app_icon'))
+        .width(80)
+        .height(80)
+        .margin({ bottom: 20 })
+        .opacity(0.5)
+
+      Text('请先阅读并同意隐私政策')
+        .fontSize(20)
+        .fontWeight(FontWeight.Bold)
+        .margin({ bottom: 12 })
+
+      Text('在你同意隐私政策前，本应用不会继续读取本地登录态，也不会申请日历权限或提供课表导入功能。')
+        .fontSize(14)
+        .fontColor('#666666')
+        .textAlign(TextAlign.Center)
+        .padding({ left: 32, right: 32 })
+        .lineHeight(20)
+        .margin({ bottom: 32 })
+
+      Button('查看并同意隐私政策')
+        .width('80%')
+        .onClick(() => {
+          this.dialogController.open();
+        })
+    }
+    .width('100%')
+    .height('100%')
+    .justifyContent(FlexAlign.Center)
+  }
+
+  @Builder
+  MainContent() {
+    Column() {
+      // 自定义顶部 Header 栏，并在右上角加入隐私政策快捷入口
+      Row() {
+        Text('南大课表导入日历')
+          .fontSize(24)
+          .fontWeight(FontWeight.Bold)
+        Blank()
+
+        // 🚀 右上角的隐私政策入口
+        Text('隐私政策')
+          .fontSize(14)
+          .fontColor('#007DFF')
+          .margin({ right: 12 })
+          .onClick(() => {
+            router.pushUrl({ url: 'pages/PrivacyPolicyPage' });
+          })
+
+        Text('ArkTS')
+          .fontSize(12)
+          .fontColor('#666666')
+      }
+      .width('100%')
+      .padding({ left: 16, right: 16, top: 16, bottom: 8 })
+
+      Scroll() {
+        Column() {
           Column() {
+            Text('说明')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+            Text('1. 使用南京大学官方统一认证网页登录，不手动处理验证码。')
+              .margin({ top: 8 })
+            Text('2. 拉取当前学期课表；本科生可选是否包含期末考试。')
+              .margin({ top: 6 })
+            Text('3. 选择系统日历后写入，并支持覆盖删除本应用此前导入的旧事件。')
+              .margin({ top: 6 })
+            Text('4. 如果系统里没有合适的日历，可以创建一个应用专用本地日历。')
+              .margin({ top: 6 })
+          }
+          .width('100%')
+          .padding(16)
+          .backgroundColor(Color.White)
+          .borderRadius(16)
+
+          Column() {
+            Text('登录')
+              .fontSize(18)
+              .fontWeight(FontWeight.Bold)
+            Text(`当前身份：${SchoolTypeHelper.shortLabel(this.schoolType)}`)
+              .margin({ top: 8 })
+            Row() {
+              Button(this.schoolType === SchoolType.UNDERGRAD ? '本科生（当前）' : '切换为本科生')
+                .onClick(() => {
+                  this.schoolType = SchoolType.UNDERGRAD;
+                })
+              Blank().width(12)
+              Button(this.schoolType === SchoolType.GRADUATE ? '研究生（当前）' : '切换为研究生')
+                .onClick(() => {
+                  this.schoolType = SchoolType.GRADUATE;
+                })
+            }
+            .width('100%')
+            .margin({ top: 10 })
+
+            TextInput({ text: this.usernameHint, placeholder: '备注用户名（可选，仅本地显示）' })
+              .onChange((value: string) => {
+                this.usernameHint = value;
+              })
+              .margin({ top: 12 })
+
+            if (this.session === undefined) {
+              Button('打开统一认证网页登录')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  this.openLoginPanel();
+                })
+            } else {
+              Text(`当前登录态：${SchoolTypeHelper.label(this.session.schoolType)} / ${this.session.usernameHint}`)
+                .margin({ top: 12 })
+              Button('清除登录态并重登')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  this.clearSessionAndCookies();
+                })
+            }
+          }
+          .width('100%')
+          .padding(16)
+          .backgroundColor(Color.White)
+          .borderRadius(16)
+          .margin({ top: 12 })
+
+          if (this.session !== undefined) {
             Column() {
-              Text('说明')
+              Text('拉取课表')
                 .fontSize(18)
                 .fontWeight(FontWeight.Bold)
-              Text('1. 使用南京大学官方统一认证网页登录，不手动处理验证码。')
-                .margin({ top: 8 })
-              Text('2. 拉取当前学期课表；本科生可选是否包含期末考试。')
-                .margin({ top: 6 })
-              Text('3. 选择系统日历后写入，并支持覆盖删除本应用此前导入的旧事件。')
-                .margin({ top: 6 })
-              Text('4. 如果系统里没有合适的日历，可以创建一个应用专用本地日历。')
-                .margin({ top: 6 })
+              if (SchoolTypeHelper.supportsFinalExams(this.session.schoolType)) {
+                Button(this.includeFinalExams ? '期末考试：已包含' : '期末考试：未包含')
+                  .width('100%')
+                  .margin({ top: 12 })
+                  .onClick(() => {
+                    this.includeFinalExams = !this.includeFinalExams;
+                  })
+              }
+              Button(this.loadingSchedule ? '正在拉取课表…' : '拉取当前学期课表')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  if (!this.loadingSchedule) {
+                    this.loadSchedule();
+                  }
+                })
             }
             .width('100%')
             .padding(16)
             .backgroundColor(Color.White)
             .borderRadius(16)
+            .margin({ top: 12 })
+          }
 
+          if (this.bundle !== undefined) {
             Column() {
-              Text('登录')
+              Text('课表预览')
                 .fontSize(18)
                 .fontWeight(FontWeight.Bold)
-              Text(`当前身份：${SchoolTypeHelper.shortLabel(this.schoolType)}`)
+              Text(`学期：${this.bundle.semesterName}`)
                 .margin({ top: 8 })
-              Row() {
-                Button(this.schoolType === SchoolType.UNDERGRAD ? '本科生（当前）' : '切换为本科生')
-                  .onClick(() => {
-                    this.schoolType = SchoolType.UNDERGRAD;
-                  })
-                Blank().width(12)
-                Button(this.schoolType === SchoolType.GRADUATE ? '研究生（当前）' : '切换为研究生')
-                  .onClick(() => {
-                    this.schoolType = SchoolType.GRADUATE;
-                  })
-              }
-              .width('100%')
-              .margin({ top: 10 })
+              Text(`课程数：${this.bundle.courseCount}    考试数：${this.bundle.examCount}    事件总数：${this.bundle.events.length}`)
+                .margin({ top: 6 })
 
-              TextInput({ text: this.usernameHint, placeholder: '备注用户名（可选，仅本地显示）' })
-                .onChange((value: string) => {
-                  this.usernameHint = value;
+              ForEach(this.previewEvents(), (item: CourseEvent) => {
+                Column() {
+                  Text(item.title)
+                    .fontSize(15)
+                    .fontWeight(FontWeight.Medium)
+                  Text(`${this.formatDateTime(item.startTime)} - ${this.formatDateTime(item.endTime)}`)
+                    .fontSize(12)
+                    .fontColor('#666666')
+                    .margin({ top: 4 })
+                  if (item.location.length > 0) {
+                    Text(item.location)
+                      .fontSize(12)
+                      .fontColor('#666666')
+                      .margin({ top: 2 })
+                  }
+                }
+                .width('100%')
+                .padding({ top: 10, bottom: 10 })
+                .border({
+                  width: { bottom: 1 },
+                  color: '#EFEFEF'
                 })
-                .margin({ top: 12 })
-
-              if (this.session === undefined) {
-                Button('打开统一认证网页登录')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    this.openLoginPanel();
-                  })
-              } else {
-                Text(`当前登录态：${SchoolTypeHelper.label(this.session.schoolType)} / ${this.session.usernameHint}`)
-                  .margin({ top: 12 })
-                Button('清除登录态并重登')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    this.clearSessionAndCookies();
-                  })
-              }
+              }, (item: CourseEvent) => item.importKey)
             }
             .width('100%')
             .padding(16)
@@ -305,60 +538,53 @@ struct Index {
             .borderRadius(16)
             .margin({ top: 12 })
 
-            if (this.session !== undefined) {
-              Column() {
-                Text('拉取课表')
-                  .fontSize(18)
-                  .fontWeight(FontWeight.Bold)
-                if (SchoolTypeHelper.supportsFinalExams(this.session.schoolType)) {
-                  Button(this.includeFinalExams ? '期末考试：已包含' : '期末考试：未包含')
-                    .width('100%')
-                    .margin({ top: 12 })
-                    .onClick(() => {
-                      this.includeFinalExams = !this.includeFinalExams;
-                    })
-                }
-                Button(this.loadingSchedule ? '正在拉取课表…' : '拉取当前学期课表')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    if (!this.loadingSchedule) {
-                      this.loadSchedule();
-                    }
-                  })
-              }
-              .width('100%')
-              .padding(16)
-              .backgroundColor(Color.White)
-              .borderRadius(16)
-              .margin({ top: 12 })
-            }
+            Column() {
+              Text('系统日历同步')
+                .fontSize(18)
+                .fontWeight(FontWeight.Bold)
+              Button(this.overwritePreviousImports ? '覆盖删除旧导入：开启' : '覆盖删除旧导入：关闭')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  this.overwritePreviousImports = !this.overwritePreviousImports;
+                })
+              Button(this.loadingCalendars ? '正在加载日历…' : '加载系统日历')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  if (!this.loadingCalendars) {
+                    this.loadCalendars();
+                  }
+                })
+              Button('创建 / 获取应用专用日历')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  this.createAppCalendar();
+                })
 
-            if (this.bundle !== undefined) {
-              Column() {
-                Text('课表预览')
-                  .fontSize(18)
-                  .fontWeight(FontWeight.Bold)
-                Text(`学期：${this.bundle.semesterName}`)
-                  .margin({ top: 8 })
-                Text(`课程数：${this.bundle.courseCount}    考试数：${this.bundle.examCount}    事件总数：${this.bundle.events.length}`)
-                  .margin({ top: 6 })
-
-                ForEach(this.previewEvents(), (item: CourseEvent) => {
-                  Column() {
-                    Text(item.title)
-                      .fontSize(15)
-                      .fontWeight(FontWeight.Medium)
-                    Text(`${this.formatDateTime(item.startTime)} - ${this.formatDateTime(item.endTime)}`)
-                      .fontSize(12)
-                      .fontColor('#666666')
-                      .margin({ top: 4 })
-                    if (item.location.length > 0) {
-                      Text(item.location)
-                        .fontSize(12)
-                        .fontColor('#666666')
-                        .margin({ top: 2 })
+              if (this.calendars.length > 0) {
+                Text('选择目标日历')
+                  .fontSize(16)
+                  .fontWeight(FontWeight.Medium)
+                  .margin({ top: 14 })
+                ForEach(this.calendars, (item: CalendarOption, index: number) => {
+                  Row() {
+                    Text(this.selectedCalendarIndex === index ? '●' : '○')
+                      .fontSize(18)
+                    Column() {
+                      Text(item.name)
+                        .fontSize(15)
+                        .fontWeight(FontWeight.Medium)
+                      if (item.subTitle.length > 0) {
+                        Text(item.subTitle)
+                          .fontSize(12)
+                          .fontColor('#666666')
+                          .margin({ top: 2 })
+                      }
                     }
+                    .margin({ left: 10 })
+                    Blank()
                   }
                   .width('100%')
                   .padding({ top: 10, bottom: 10 })
@@ -366,107 +592,59 @@ struct Index {
                     width: { bottom: 1 },
                     color: '#EFEFEF'
                   })
-                }, (item: CourseEvent) => item.importKey)
+                  .onClick(() => {
+                    this.selectedCalendarIndex = index;
+                  })
+                }, (item: CalendarOption) => item.id)
               }
-              .width('100%')
-              .padding(16)
-              .backgroundColor(Color.White)
-              .borderRadius(16)
-              .margin({ top: 12 })
 
-              Column() {
-                Text('系统日历同步')
-                  .fontSize(18)
-                  .fontWeight(FontWeight.Bold)
-                Button(this.overwritePreviousImports ? '覆盖删除旧导入：开启' : '覆盖删除旧导入：关闭')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    this.overwritePreviousImports = !this.overwritePreviousImports;
-                  })
-                Button(this.loadingCalendars ? '正在加载日历…' : '加载系统日历')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    if (!this.loadingCalendars) {
-                      this.loadCalendars();
-                    }
-                  })
-                Button('创建 / 获取应用专用日历')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    this.createAppCalendar();
-                  })
-
-                if (this.calendars.length > 0) {
-                  Text('选择目标日历')
-                    .fontSize(16)
-                    .fontWeight(FontWeight.Medium)
-                    .margin({ top: 14 })
-                  ForEach(this.calendars, (item: CalendarOption, index: number) => {
-                    Row() {
-                      Text(this.selectedCalendarIndex === index ? '●' : '○')
-                        .fontSize(18)
-                      Column() {
-                        Text(item.name)
-                          .fontSize(15)
-                          .fontWeight(FontWeight.Medium)
-                        if (item.subTitle.length > 0) {
-                          Text(item.subTitle)
-                            .fontSize(12)
-                            .fontColor('#666666')
-                            .margin({ top: 2 })
-                        }
-                      }
-                      .margin({ left: 10 })
-                      Blank()
-                    }
-                    .width('100%')
-                    .padding({ top: 10, bottom: 10 })
-                    .border({
-                      width: { bottom: 1 },
-                      color: '#EFEFEF'
-                    })
-                    .onClick(() => {
-                      this.selectedCalendarIndex = index;
-                    })
-                  }, (item: CalendarOption) => item.id)
-                }
-
-                Button(this.syncingCalendar ? '正在写入系统日历…' : '写入系统日历')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    if (!this.syncingCalendar) {
-                      this.syncToCalendar();
-                    }
-                  })
-                Button(this.deletingImported ? '正在清空导入事件…' : '一键清空本应用导入事件')
-                  .width('100%')
-                  .margin({ top: 12 })
-                  .onClick(() => {
-                    if (!this.deletingImported) {
-                      this.deleteImportedEvents();
-                    }
-                  })
-              }
-              .width('100%')
-              .padding(16)
-              .backgroundColor(Color.White)
-              .borderRadius(16)
-              .margin({ top: 12, bottom: 16 })
+              Button(this.syncingCalendar ? '正在写入系统日历…' : '写入系统日历')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  if (!this.syncingCalendar) {
+                    this.syncToCalendar();
+                  }
+                })
+              Button(this.deletingImported ? '正在清空导入事件…' : '一键清空本应用导入事件')
+                .width('100%')
+                .margin({ top: 12 })
+                .onClick(() => {
+                  if (!this.deletingImported) {
+                    this.deleteImportedEvents();
+                  }
+                })
             }
+            .width('100%')
+            .padding(16)
+            .backgroundColor(Color.White)
+            .borderRadius(16)
+            .margin({ top: 12, bottom: 16 })
           }
-          .width('100%')
-          .padding({ left: 16, right: 16 })
         }
         .width('100%')
+        .padding({ left: 16, right: 16 })
       }
       .width('100%')
-      .height('100%')
-      .backgroundColor('#F5F6FA')
+    }
+    .width('100%')
+    .height('100%')
+  }
 
+  build() {
+    Stack() {
+      // 底层视图：依据状态进行渲染
+      if (!this.isReady) {
+        Column() {
+          LoadingProgress().width(64).height(64)
+        }.width('100%').height('100%').justifyContent(FlexAlign.Center)
+      } else if (!this.privacyAccepted) {
+        this.PrivacyBlockedView()
+      } else {
+        this.MainContent()
+      }
+
+      // 顶层视图：网页登录 Overlay，完美保留你之前的结构
       if (this.showLoginPanel) {
         Column() {
           Row() {
@@ -550,5 +728,8 @@ struct Index {
         .backgroundColor('#F5F6FA')
       }
     }
+    .width('100%')
+    .height('100%')
+    .backgroundColor('#F5F6FA')
   }
 }
