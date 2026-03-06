@@ -313,7 +313,7 @@ export class NjuScheduleService {
       }
       event.description = NjuScheduleService.buildDescription(
         event.importKey,
-        '南京大学本科生',
+        '本科生',
         teacher,
         className,
         campus,
@@ -422,7 +422,6 @@ export class NjuScheduleService {
     let lines: string[] = [];
     lines.push('[NJU_SCHEDULE_IMPORT]');
     lines.push(`import_key=${importKey}`);
-    lines.push(`学校：${schoolLabel}`);
     if (teacher.length > 0) {
       lines.push(`教师：${teacher}`);
     }

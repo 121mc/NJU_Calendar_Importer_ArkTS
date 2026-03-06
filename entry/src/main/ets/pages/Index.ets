@@ -27,7 +27,7 @@ struct PrivacyDialog {
         .margin({ top: 24, bottom: 12 })
 
       Scroll() {
-        Text('欢迎使用“NJU课表导入”。\n\n在你使用本应用前，请先阅读并同意《隐私政策》。本应用主要提供南京大学课表导入系统日历功能。为实现该功能，本应用会在你主动操作时访问南京大学官方登录页面，并在获得你授权后申请日历权限，以便读取系统日历列表、写入课表事件以及清理本应用此前导入的数据。\n\n本应用不包含广告、不包含内购，也不会将你的账号、课表内容或日历数据上传到开发者自建服务器。相关数据仅在你的设备本地处理，并仅在访问南京大学官方系统时与学校服务器通信。')
+        Text('欢迎使用“NJU课表导入”。\n\n在你使用本应用前，请先阅读并同意《隐私政策》。本应用主要提供南京大学课表导入系统日历功能。为实现该功能，本应用会在你主动操作时访问官方登录页面，并在获得你授权后申请日历权限，以便读取系统日历列表、写入课表事件以及清理本应用此前导入的数据。\n\n本应用不包含广告、不包含内购，也不会将你的账号、课表内容或日历数据上传到开发者自建服务器。相关数据仅在你的设备本地处理，并仅在访问官方系统时与学校服务器通信。')
           .fontSize(15)
           .fontColor('#666666')
           .lineHeight(22)
@@ -74,6 +74,9 @@ struct PrivacyDialog {
 struct Index {
   private context: common.UIAbilityContext | undefined = undefined;
   private loginWebController: webview.WebviewController = new webview.WebviewController();
+
+  // 控制是否已经执行过首次自动刷新
+  private hasAutoRefreshed: boolean = false;
 
   // --- 隐私政策相关的状态 ---
   @State privacyAccepted: boolean = false;
@@ -204,6 +207,7 @@ struct Index {
     this.showLoginPanel = true;
     this.webCurrentUrl = '';
     this.loginHintText = '请在下方网页中完成统一认证登录，并确保已经真正进入课表应用首页。';
+    this.hasAutoRefreshed = false;
   }
 
   private async saveLoginState(): Promise<void> {
@@ -378,7 +382,7 @@ struct Index {
     Column() {
       // 自定义顶部 Header 栏，并在右上角加入隐私政策快捷入口
       Row() {
-        Text('NJU课表导入')
+        Text('呢喃课表导入')
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
         Blank()
@@ -400,15 +404,18 @@ struct Index {
             Text('说明')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
-            Text('1. 本项目旨在提供一个南京大学课表导入手机日历解决方案，供有需求的同学参考使用。')
+            Text('1. 本项目旨在提供一个课表导入手机日历解决方案，供有需求的同学参考使用。')
               .margin({ top: 8 })
             Text('2. 本项目完全免费开源，且不包含任何广告或内购；使用过程中也不会将课表数据上传到开发者自建服务器。')
               .margin({ top: 6 })
-            Text('3. 本应用仅在你主动使用相关功能时访问南京大学官方系统，并在获得授权后申请日历权限。')
+            Text('3. 本应用仅在你主动使用相关功能时访问官方系统，并在获得授权后申请日历权限。')
               .margin({ top: 6 })
             Text('4. 本项目由 mc_121 维护，邮箱 mc_121_@outlook.com。')
               .margin({ top: 6 })
+            Text('5. 本项目是个人开发项目，与位于江苏省南京市的任何大学均无关。')
+              .margin({ top: 6 })
           }
+          .alignItems(HorizontalAlign.Start)
           .width('100%')
           .padding(16)
           .backgroundColor(Color.White)
@@ -490,7 +497,7 @@ struct Index {
             .padding(16)
             .backgroundColor(Color.White)
             .borderRadius(16)
-            .margin({ top: 12 })
+            .margin({ top: 12 , bottom: 24})
           }
 
           if (this.bundle !== undefined) {
@@ -618,7 +625,7 @@ struct Index {
           }
         }
         .width('100%')
-        .padding({ left: 16, right: 16 })
+        .padding({ left: 16, right: 16, bottom: 16 })
       }
       .width('100%')
     }
@@ -639,7 +646,7 @@ struct Index {
         this.MainContent()
       }
 
-      // 顶层视图：网页登录 Overlay，完美保留你之前的结构
+      // 顶层视图：网页登录 Overlay
       if (this.showLoginPanel) {
         Column() {
           Row() {
@@ -672,9 +679,10 @@ struct Index {
           .borderRadius(16)
           .margin({ left: 16, right: 16 })
 
-          Web({ src: 'about:blank', controller: this.loginWebController })
+          // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
+          Web({ src: AuthService.buildWebLoginEntryUrl(this.schoolType), controller: this.loginWebController })
             .width('100%')
-            .height('65%')
+            .layoutWeight(1)
             .margin({ top: 12, left: 16, right: 16 })
             .backgroundColor(Color.White)
             .onControllerAttached(() => {
@@ -683,40 +691,48 @@ struct Index {
               } catch (error) {
                 console.error(`setCustomUserAgent failed: ${JSON.stringify(error)}`);
               }
-              this.loginWebController.loadUrl(AuthService.buildWebLoginEntryUrl(this.schoolType));
             })
             .onPageBegin((event) => {
-              if (event) {
+              if (event && !event.url.includes('about:blank')) {
                 this.webCurrentUrl = event.url;
               }
             })
             .onPageEnd((event) => {
               if (event) {
-                this.webCurrentUrl = event.url;
+                if (!event.url.includes('about:blank')) {
+                  this.webCurrentUrl = event.url;
+                }
                 if (event.url.includes('index.do')) {
                   this.loginHintText = '检测到你可能已经进入课表首页。现在可以点击下方按钮保存登录态。';
+                }
+              }
+
+              if (!this.hasAutoRefreshed && event && !event.url.includes('about:blank')) {
+                this.hasAutoRefreshed = true;
+                try {
+                  this.loginWebController.refresh();
+                  console.info('已执行首次自动刷新');
+                } catch (e) {
+                  console.error('自动刷新失败', e);
                 }
               }
             })
             .javaScriptAccess(true)
             .domStorageAccess(true)
 
-          Button(this.savingLoginState ? '正在保存登录态…' : '我已进入课表应用首页，保存登录态')
-            .width('100%')
-            .margin({ top: 12, left: 16, right: 16 })
-            .onClick(() => {
-              if (!this.savingLoginState) {
-                this.saveLoginState();
-              }
-            })
-          Button('清空网页 Cookie 后重新登录')
-            .width('100%')
-            .margin({ top: 12, left: 16, right: 16 })
-            .onClick(() => {
-              AuthService.clearWebCookies();
-              this.loginWebController.loadUrl(AuthService.buildWebLoginEntryUrl(this.schoolType));
-              this.loginHintText = '已清空 Cookie，请重新完成网页登录。';
-            })
+          // 底部按钮区域：吸底，并使用 padding 留出安全距离
+          Column() {
+            Button(this.savingLoginState ? '正在保存登录态…' : '我已进入课表应用首页，保存登录态')
+              .width('80%')
+              .onClick(() => {
+                if (!this.savingLoginState) {
+                  this.saveLoginState();
+                }
+              })
+          }
+          .width('100%')
+          .padding({ top: 12, bottom: 10 })
+          .backgroundColor('#F5F6FA')
         }
         .width('100%')
         .height('100%')

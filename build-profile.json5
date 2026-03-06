@@ -23,13 +23,13 @@
         "name": "default",
         "type": "HarmonyOS",
         "material": {
-          "storeFile": "C:/Users/hp/mc_121.p12",
-          "storePassword": "0000001E5E148DBE3068E64BF73279322CEF5A8133C6E9A0C52DF9772FD6A4A2611E851558AB78F9CC2E79D96D89",
-          "keyAlias": "mc_121_key",
-          "keyPassword": "0000001E1B53E189884649B3B26DFC6549284CE1495CE75D10FBE79B0DB77A43C414DE25C6DC1073238FA9962925",
+          "certpath": "C:\\Users\\hp\\.ohos\\config\\default_NJU_Calendar_Importer_ArkTS_fKNh4q_d7TvD3G1GpQEu3Hgte2R2n_RfvqX31baEYds=.cer",
+          "keyAlias": "debugKey",
+          "keyPassword": "0000001BB8294275485288EF62171682FE9FF345866E772747FD4A74CE7467696DD304E28D7308012E60E1",
+          "profile": "C:\\Users\\hp\\.ohos\\config\\default_NJU_Calendar_Importer_ArkTS_fKNh4q_d7TvD3G1GpQEu3Hgte2R2n_RfvqX31baEYds=.p7b",
           "signAlg": "SHA256withECDSA",
-          "profile": "C:/Users/hp/Desktop/NJU课表导入Release.p7b",
-          "certpath": "C:/Users/hp/Desktop/NJU_Calendar_Importer.cer"
+          "storeFile": "C:\\Users\\hp\\.ohos\\config\\default_NJU_Calendar_Importer_ArkTS_fKNh4q_d7TvD3G1GpQEu3Hgte2R2n_RfvqX31baEYds=.p12",
+          "storePassword": "0000001B48C5856012D3330EBFA26B4EB2FD70A91115CF72321F5B42AA2D8417891240E16EA07321E79E88"
         }
       }
     ]

@@ -256,7 +256,7 @@ export class NjuScheduleService {
             if (studentClasses.length > 0) {
                 extras.push(`上课班级：${studentClasses}`);
             }
-            event.description = NjuScheduleService.buildDescription(event.importKey, '南京大学本科生', teacher, className, campus, extras);
+            event.description = NjuScheduleService.buildDescription(event.importKey, '本科生', teacher, className, campus, extras);
             result.push(event);
         }
         return result;
@@ -344,7 +344,6 @@ export class NjuScheduleService {
         let lines: string[] = [];
         lines.push('[NJU_SCHEDULE_IMPORT]');
         lines.push(`import_key=${importKey}`);
-        lines.push(`学校：${schoolLabel}`);
         if (teacher.length > 0) {
             lines.push(`教师：${teacher}`);
         }

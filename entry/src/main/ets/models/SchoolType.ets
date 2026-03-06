@@ -5,7 +5,7 @@ export enum SchoolType {
 
 export class SchoolTypeHelper {
   static label(type: SchoolType): string {
-    return type === SchoolType.UNDERGRAD ? '南京大学本科生' : '南京大学研究生';
+    return type === SchoolType.UNDERGRAD ? '本科生' : '研究生';
   }
 
   static shortLabel(type: SchoolType): string {

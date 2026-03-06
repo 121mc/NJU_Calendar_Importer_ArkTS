@@ -5,7 +5,7 @@ export struct PrivacyPolicyPage {
     Navigation() {
       Scroll() {
         Column() {
-          Text('NJU课表导入隐私政策')
+          Text('呢喃课表导入隐私政策')
             .fontSize(20)
             .fontWeight(FontWeight.Bold)
             .margin({ bottom: 12 })
@@ -20,7 +20,7 @@ export struct PrivacyPolicyPage {
             .fontSize(17)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 16, bottom: 8 })
-          Text('本应用用于帮助南京大学学生将课表与考试信息导入手机系统日历。本应用不提供社交、广告、支付或个性化推荐功能。')
+          Text('本应用用于帮助呢喃学生将课表与考试信息导入手机系统日历。本应用不提供社交、广告、支付或个性化推荐功能。\n\n本项目是个人开发项目，与位于江苏省南京市的任何大学均无关。')
             .fontSize(15)
             .lineHeight(22)
 
@@ -29,7 +29,7 @@ export struct PrivacyPolicyPage {
             .fontSize(17)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 16, bottom: 8 })
-          Text('为了实现课表导入功能，本应用可能在你主动操作时处理以下信息：\n• 你在南京大学官方统一认证页面输入并完成认证所需的信息。\n• 从南京大学官方系统返回的课表、考试、上课地点、教师等信息。\n• 你授权后可访问的系统日历列表与本应用写入的日历事件。')
+          Text('为了实现课表导入功能，本应用可能在你主动操作时处理以下信息：\n• 你在官方统一认证页面输入并完成认证所需的信息。\n• 从官方系统返回的课表、考试、上课地点、教师等信息。\n• 你授权后可访问的系统日历列表与本应用写入的日历事件。')
             .fontSize(15)
             .lineHeight(22)
 
@@ -47,7 +47,7 @@ export struct PrivacyPolicyPage {
             .fontSize(17)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 16, bottom: 8 })
-          Text('本应用不会将你的课表、日历内容或账号信息上传到开发者自建服务器。\n本应用仅在你使用登录和课表拉取功能时，与南京大学官方系统进行网络通信。\n必要的登录态、设置项或功能状态仅保存在你的设备本地，用于保证功能正常运行。')
+          Text('本应用不会将你的课表、日历内容或账号信息上传到开发者自建服务器。\n本应用仅在你使用登录和课表拉取功能时，与官方系统进行网络通信。\n必要的登录态、设置项或功能状态仅保存在你的设备本地，用于保证功能正常运行。')
             .fontSize(15)
             .lineHeight(22)
 
@@ -56,7 +56,7 @@ export struct PrivacyPolicyPage {
             .fontSize(17)
             .fontWeight(FontWeight.Bold)
             .margin({ top: 16, bottom: 8 })
-          Text('本应用依赖设备系统提供的日历能力，并通过应用内网页访问南京大学官方认证与课表系统。')
+          Text('本应用依赖设备系统提供的日历能力，并通过应用内网页访问官方认证与课表系统。')
             .fontSize(15)
             .lineHeight(22)
 

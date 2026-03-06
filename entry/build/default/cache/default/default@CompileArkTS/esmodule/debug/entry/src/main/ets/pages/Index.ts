@@ -4,6 +4,7 @@ if (!("finalizeConstruction" in ViewPU.prototype)) {
 interface Index_Params {
     context?: common.UIAbilityContext | undefined;
     loginWebController?: webview.WebviewController;
+    hasAutoRefreshed?: boolean;
     privacyAccepted?: boolean;
     isReady?: boolean;
     schoolType?: SchoolType;
@@ -104,7 +105,7 @@ class PrivacyDialog extends ViewPU {
             Scroll.margin({ left: 24, right: 24, bottom: 20 });
         }, Scroll);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('欢迎使用“NJU课表导入”。\n\n在你使用本应用前，请先阅读并同意《隐私政策》。本应用主要提供南京大学课表导入系统日历功能。为实现该功能，本应用会在你主动操作时访问南京大学官方登录页面，并在获得你授权后申请日历权限，以便读取系统日历列表、写入课表事件以及清理本应用此前导入的数据。\n\n本应用不包含广告、不包含内购，也不会将你的账号、课表内容或日历数据上传到开发者自建服务器。相关数据仅在你的设备本地处理，并仅在访问南京大学官方系统时与学校服务器通信。');
+            Text.create('欢迎使用“NJU课表导入”。\n\n在你使用本应用前，请先阅读并同意《隐私政策》。本应用主要提供南京大学课表导入系统日历功能。为实现该功能，本应用会在你主动操作时访问官方登录页面，并在获得你授权后申请日历权限，以便读取系统日历列表、写入课表事件以及清理本应用此前导入的数据。\n\n本应用不包含广告、不包含内购，也不会将你的账号、课表内容或日历数据上传到开发者自建服务器。相关数据仅在你的设备本地处理，并仅在访问官方系统时与学校服务器通信。');
             Text.fontSize(15);
             Text.fontColor('#666666');
             Text.lineHeight(22);
@@ -161,6 +162,7 @@ class Index extends ViewPU {
         }
         this.context = undefined;
         this.loginWebController = new webview.WebviewController();
+        this.hasAutoRefreshed = false;
         this.__privacyAccepted = new ObservedPropertySimplePU(false, this, "privacyAccepted");
         this.__isReady = new ObservedPropertySimplePU(false, this, "isReady");
         this.__schoolType = new ObservedPropertySimplePU(SchoolType.UNDERGRAD, this, "schoolType");
@@ -203,7 +205,7 @@ class Index extends ViewPU {
                     openPrivacyPage: () => {
                         router.pushUrl({ url: 'pages/PrivacyPolicyPage' });
                     }
-                }, undefined, -1, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 101, col: 14 });
+                }, undefined, -1, () => { }, { page: "entry/src/main/ets/pages/Index.ets", line: 104, col: 14 });
                 jsDialog.setController(this.
                 // 注册弹窗控制器
                 dialogController);
@@ -247,6 +249,9 @@ class Index extends ViewPU {
         }
         if (params.loginWebController !== undefined) {
             this.loginWebController = params.loginWebController;
+        }
+        if (params.hasAutoRefreshed !== undefined) {
+            this.hasAutoRefreshed = params.hasAutoRefreshed;
         }
         if (params.privacyAccepted !== undefined) {
             this.privacyAccepted = params.privacyAccepted;
@@ -352,6 +357,8 @@ class Index extends ViewPU {
     }
     private context: common.UIAbilityContext | undefined;
     private loginWebController: webview.WebviewController;
+    // 控制是否已经执行过首次自动刷新
+    private hasAutoRefreshed: boolean;
     // --- 隐私政策相关的状态 ---
     private __privacyAccepted: ObservedPropertySimplePU<boolean>;
     get privacyAccepted() {
@@ -555,6 +562,7 @@ class Index extends ViewPU {
         this.showLoginPanel = true;
         this.webCurrentUrl = '';
         this.loginHintText = '请在下方网页中完成统一认证登录，并确保已经真正进入课表应用首页。';
+        this.hasAutoRefreshed = false;
     }
     private async saveLoginState(): Promise<void> {
         if (this.context === undefined) {
@@ -754,7 +762,7 @@ class Index extends ViewPU {
             Row.padding({ left: 16, right: 16, top: 16, bottom: 8 });
         }, Row);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('南大课表导入日历');
+            Text.create('呢喃课表导入');
             Text.fontSize(24);
             Text.fontWeight(FontWeight.Bold);
         }, Text);
@@ -788,10 +796,11 @@ class Index extends ViewPU {
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
             Column.width('100%');
-            Column.padding({ left: 16, right: 16 });
+            Column.padding({ left: 16, right: 16, bottom: 16 });
         }, Column);
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Column.create();
+            Column.alignItems(HorizontalAlign.Start);
             Column.width('100%');
             Column.padding(16);
             Column.backgroundColor(Color.White);
@@ -804,7 +813,7 @@ class Index extends ViewPU {
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('1. 本项目旨在提供一个南京大学课表导入手机日历解决方案，供有需求的同学参考使用。');
+            Text.create('1. 本项目旨在提供一个课表导入手机日历解决方案，供有需求的同学参考使用。');
             Text.margin({ top: 8 });
         }, Text);
         Text.pop();
@@ -814,12 +823,17 @@ class Index extends ViewPU {
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
-            Text.create('3. 本应用仅在你主动使用相关功能时访问南京大学官方系统，并在获得授权后申请日历权限。');
+            Text.create('3. 本应用仅在你主动使用相关功能时访问官方系统，并在获得授权后申请日历权限。');
             Text.margin({ top: 6 });
         }, Text);
         Text.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             Text.create('4. 本项目由 mc_121 维护，邮箱 mc_121_@outlook.com。');
+            Text.margin({ top: 6 });
+        }, Text);
+        Text.pop();
+        this.observeComponentCreation2((elmtId, isInitialRender) => {
+            Text.create('5. 本项目是个人开发项目，与位于江苏省南京市的任何大学均无关。');
             Text.margin({ top: 6 });
         }, Text);
         Text.pop();
@@ -921,7 +935,7 @@ class Index extends ViewPU {
                         Column.padding(16);
                         Column.backgroundColor(Color.White);
                         Column.borderRadius(16);
-                        Column.margin({ top: 12 });
+                        Column.margin({ top: 12, bottom: 24 });
                     }, Column);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Text.create('拉取课表');
@@ -1246,7 +1260,7 @@ class Index extends ViewPU {
         If.pop();
         this.observeComponentCreation2((elmtId, isInitialRender) => {
             If.create();
-            // 顶层视图：网页登录 Overlay，完美保留你之前的结构
+            // 顶层视图：网页登录 Overlay
             if (this.showLoginPanel) {
                 this.ifElseBranchUpdateFunction(0, () => {
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
@@ -1313,11 +1327,17 @@ class Index extends ViewPU {
                     If.pop();
                     Column.pop();
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Web.create({ src: 'about:blank', controller: this.loginWebController });
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
+                        Web.create({ src: AuthService.buildWebLoginEntryUrl(this.schoolType), controller: this.loginWebController });
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.width('100%');
-                        Web.height('65%');
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
+                        Web.layoutWeight(1);
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.margin({ top: 12, left: 16, right: 16 });
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.backgroundColor(Color.White);
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.onControllerAttached(() => {
                             try {
                                 this.loginWebController.setCustomUserAgent(HttpService.browserUserAgent);
@@ -1325,28 +1345,52 @@ class Index extends ViewPU {
                             catch (error) {
                                 console.error(`setCustomUserAgent failed: ${JSON.stringify(error)}`);
                             }
-                            this.loginWebController.loadUrl(AuthService.buildWebLoginEntryUrl(this.schoolType));
                         });
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.onPageBegin((event) => {
-                            if (event) {
+                            if (event && !event.url.includes('about:blank')) {
                                 this.webCurrentUrl = event.url;
                             }
                         });
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.onPageEnd((event) => {
                             if (event) {
-                                this.webCurrentUrl = event.url;
+                                if (!event.url.includes('about:blank')) {
+                                    this.webCurrentUrl = event.url;
+                                }
                                 if (event.url.includes('index.do')) {
                                     this.loginHintText = '检测到你可能已经进入课表首页。现在可以点击下方按钮保存登录态。';
                                 }
                             }
+                            if (!this.hasAutoRefreshed && event && !event.url.includes('about:blank')) {
+                                this.hasAutoRefreshed = true;
+                                try {
+                                    this.loginWebController.refresh();
+                                    console.info('已执行首次自动刷新');
+                                }
+                                catch (e) {
+                                    console.error('自动刷新失败', e);
+                                }
+                            }
                         });
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.javaScriptAccess(true);
+                        // Web 组件：使用 layoutWeight(1) 自动撑满剩余空间，抛弃 about:blank
                         Web.domStorageAccess(true);
                     }, Web);
                     this.observeComponentCreation2((elmtId, isInitialRender) => {
+                        // 底部按钮区域：吸底，并使用 padding 留出安全距离
+                        Column.create();
+                        // 底部按钮区域：吸底，并使用 padding 留出安全距离
+                        Column.width('100%');
+                        // 底部按钮区域：吸底，并使用 padding 留出安全距离
+                        Column.padding({ top: 12, bottom: 10 });
+                        // 底部按钮区域：吸底，并使用 padding 留出安全距离
+                        Column.backgroundColor('#F5F6FA');
+                    }, Column);
+                    this.observeComponentCreation2((elmtId, isInitialRender) => {
                         Button.createWithLabel(this.savingLoginState ? '正在保存登录态…' : '我已进入课表应用首页，保存登录态');
-                        Button.width('100%');
-                        Button.margin({ top: 12, left: 16, right: 16 });
+                        Button.width('80%');
                         Button.onClick(() => {
                             if (!this.savingLoginState) {
                                 this.saveLoginState();
@@ -1354,17 +1398,8 @@ class Index extends ViewPU {
                         });
                     }, Button);
                     Button.pop();
-                    this.observeComponentCreation2((elmtId, isInitialRender) => {
-                        Button.createWithLabel('清空网页 Cookie 后重新登录');
-                        Button.width('100%');
-                        Button.margin({ top: 12, left: 16, right: 16 });
-                        Button.onClick(() => {
-                            AuthService.clearWebCookies();
-                            this.loginWebController.loadUrl(AuthService.buildWebLoginEntryUrl(this.schoolType));
-                            this.loginHintText = '已清空 Cookie，请重新完成网页登录。';
-                        });
-                    }, Button);
-                    Button.pop();
+                    // 底部按钮区域：吸底，并使用 padding 留出安全距离
+                    Column.pop();
                     Column.pop();
                 });
             }

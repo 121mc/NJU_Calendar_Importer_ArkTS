@@ -5,7 +5,7 @@ import { PermissionService } from './PermissionService';
 
 export class CalendarSyncService {
   static importMarker: string = '[NJU_SCHEDULE_IMPORT]';
-  static appCalendarName: string = 'NJU课表导入';
+  static appCalendarName: string = '南哪课表导入';
 
   static async listWritableCalendars(context: common.UIAbilityContext): Promise<CalendarOption[]> {
     let granted = await PermissionService.requestCalendarPermissions(context);
