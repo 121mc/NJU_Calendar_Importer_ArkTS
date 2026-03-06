@@ -3,6 +3,7 @@
     "products": [
       {
         "name": "default",
+        "signingConfig": "default",
         "compatibleSdkVersion": "6.0.2(22)",
         "targetSdkVersion": "6.0.2(22)",
         "compileSdkVersion": "6.0.2(22)",
@@ -15,6 +16,21 @@
       },
       {
         "name": "release"
+      }
+    ],
+    "signingConfigs": [
+      {
+        "name": "default",
+        "type": "HarmonyOS",
+        "material": {
+          "storeFile": "C:/Users/hp/mc_121.p12",
+          "storePassword": "0000001E5E148DBE3068E64BF73279322CEF5A8133C6E9A0C52DF9772FD6A4A2611E851558AB78F9CC2E79D96D89",
+          "keyAlias": "mc_121_key",
+          "keyPassword": "0000001E1B53E189884649B3B26DFC6549284CE1495CE75D10FBE79B0DB77A43C414DE25C6DC1073238FA9962925",
+          "signAlg": "SHA256withECDSA",
+          "profile": "C:/Users/hp/Desktop/NJU课表导入Release.p7b",
+          "certpath": "C:/Users/hp/Desktop/NJU_Calendar_Importer.cer"
+        }
       }
     ]
   },

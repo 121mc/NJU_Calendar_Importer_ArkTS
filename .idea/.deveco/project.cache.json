@@ -7,7 +7,7 @@
 	},
 	"BuildOptions":{
 		"SELECT_BUILD_PRODUCT":"default",
-		"BUNDLE_NAME":"com.mc.njucalendar",
+		"BUNDLE_NAME":"com.mc121.njucalendarimporter",
 		"BUILD_PATH":{
 			"OUTPUT_PATH":"D:\\NJU_Calendar_Importer_ArkTS\\build\\outputs\\default"
 		},

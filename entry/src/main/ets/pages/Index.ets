@@ -378,7 +378,7 @@ struct Index {
     Column() {
       // 自定义顶部 Header 栏，并在右上角加入隐私政策快捷入口
       Row() {
-        Text('南大课表导入日历')
+        Text('NJU课表导入')
           .fontSize(24)
           .fontWeight(FontWeight.Bold)
         Blank()
@@ -387,31 +387,26 @@ struct Index {
         Text('隐私政策')
           .fontSize(14)
           .fontColor('#007DFF')
-          .margin({ right: 12 })
+          .margin({ right: 6 })
           .onClick(() => {
             router.pushUrl({ url: 'pages/PrivacyPolicyPage' });
           })
-
-        Text('ArkTS')
-          .fontSize(12)
-          .fontColor('#666666')
       }
       .width('100%')
       .padding({ left: 16, right: 16, top: 16, bottom: 8 })
-
       Scroll() {
         Column() {
           Column() {
             Text('说明')
               .fontSize(18)
               .fontWeight(FontWeight.Bold)
-            Text('1. 使用南京大学官方统一认证网页登录，不手动处理验证码。')
+            Text('1. 本项目旨在提供一个南京大学课表导入手机日历解决方案，供有需求的同学参考使用。')
               .margin({ top: 8 })
-            Text('2. 拉取当前学期课表；本科生可选是否包含期末考试。')
+            Text('2. 本项目完全免费开源，且不包含任何广告或内购；使用过程中也不会将课表数据上传到开发者自建服务器。')
               .margin({ top: 6 })
-            Text('3. 选择系统日历后写入，并支持覆盖删除本应用此前导入的旧事件。')
+            Text('3. 本应用仅在你主动使用相关功能时访问南京大学官方系统，并在获得授权后申请日历权限。')
               .margin({ top: 6 })
-            Text('4. 如果系统里没有合适的日历，可以创建一个应用专用本地日历。')
+            Text('4. 本项目由 mc_121 维护，邮箱 mc_121_@outlook.com。')
               .margin({ top: 6 })
           }
           .width('100%')

@@ -1,27 +1,78 @@
 {
+  "HVIGOR_OHOS_PLUGIN": {
+    "MODULES": [
+      {
+        "MODULE_NAME": "923fe53966c6cd9343e11af776cd4b05be315ea4b200b02e4d5dfb0f929b73bf",
+        "API_TYPE": "stageMode",
+        "INCLUDE_IN_BUILD": true,
+        "IS_COMMAND_LINE_ENTRY_MODULE": false,
+        "MODULE_TYPE": "entry",
+        "INCREMENTAL_TASKS": {
+          "COMPILE_ARKTS": false
+        },
+        "IS_INCREMENTAL_MODULE": false
+      }
+    ],
+    "NATIVE_COMPILER": "Default",
+    "IS_FULL_BUILD": true,
+    "BUILD_MODE": "release"
+  },
   "HVIGOR": {
     "IS_INCREMENTAL": true,
     "IS_DAEMON": true,
     "IS_PARALLEL": true,
     "IS_HVIGORFILE_TYPE_CHECK": false,
-    "TASK_TIME": {},
-    "APIS": [],
+    "TASK_TIME": {
+      "923fe53966c6cd9343e11af776cd4b05be315ea4b200b02e4d5dfb0f929b73bf": {
+        "init": 312300,
+        "PreBuild": 16902400,
+        "CreateModuleInfo": 431600,
+        "ConfigureCmake": 165000,
+        "MergeProfile": 2550600,
+        "CreateBuildProfile": 1200300,
+        "PreCheckSyscap": 236700,
+        "GeneratePkgContextInfo": 3255900,
+        "ProcessIntegratedHsp": 420600,
+        "BuildNativeWithCmake": 192200,
+        "MakePackInfo": 1943600,
+        "SyscapTransform": 1612800,
+        "ProcessProfile": 65620300,
+        "ProcessStartupConfig": 953200,
+        "BuildNativeWithNinja": 426400,
+        "ProcessLibs": 3084800,
+        "CompileResource": 249000000,
+        "BuildJS": 1699300,
+        "CompileArkTS": 1706110100,
+        "GeneratePkgModuleJson": 1663800,
+        "ProcessCompiledResources": 359500,
+        "PackageHap": 26376000,
+        "PackingCheck": 3593500,
+        "SignHap": 120328000,
+        "CollectDebugSymbol": 2306500,
+        "assembleHap": 121600
+      },
+      "APP": {
+        "init": 168500,
+        "PreBuildApp": 297500,
+        "DuplicateDependencyCheck": 197700,
+        "MakeProjectPackInfo": 2452500,
+        "ProcessProjectPrivacyProfile": 3690600,
+        "GeneratePackRes": 562900,
+        "PackageApp": 311116800,
+        "SignPackagesFromApp": 985400,
+        "SignApp": 66525800,
+        "assembleApp": 185500
+      }
+    },
+    "APIS": [
+      "getProperty"
+    ],
     "CONFIG_EXPERIMENT": {
       "ENABLE_MODULE_SKIP": false,
       "ENABLE_CPP_FUNCTION_LEVEL_INCREMENTAL": false
     },
     "CONFIG_PROPERTIES": {},
-    "BUILD_ID": "202603031939491690",
-    "ERROR_MESSAGE": [
-      {
-        "CODE": "00303038",
-        "MESSAGE": "%s",
-        "SOLUTIONS": [
-          "Please check the following fields. \r\n {\n  instancePath: 'app.products[0]',\n  keyword: 'required',\n  params: { missingProperty: 'compatibleSdkVersion' },\n  message: \"must have required property 'compatibleSdkVersion'\",\n  location: 'D:/NJU_Calendar_Importer_ArkTS/build-profile.json5:4:8'\n} \r\n"
-        ],
-        "TIMESTAMP": "1772537990552"
-      }
-    ],
-    "TOTAL_TIME": 1407002300
+    "TOTAL_TIME": 2729198500,
+    "BUILD_ID": "202603061352109180"
   }
 }

@@ -1,11 +1,12 @@
-# 南大课表导入日历  ( 鸿蒙版 )
+# NJU课表导入 for HarmonyOS
 
 一个基于 ArkTS 开发的南京大学课表导入工具。
 
 本项目通过南京大学官方统一认证网页完成登录，自动拉取当前学期课表，并将课程与考试事件写入手机系统日历，方便在原生日历中统一查看和管理。
 
-基于 Flutter 开发的安卓版应用https://github.com/121mc/NJU_Calendar_Importer_Flutter
+基于 Flutter 开发的 Android 和 iOS 应用https://github.com/121mc/NJU_Calendar_Importer_Flutter
 
+下载方式：在华为商城搜索 NJU课表导入
 
 ## 项目说明
 
