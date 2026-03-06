@@ -6,7 +6,7 @@
 
 基于 Flutter 开发的 Android 和 iOS 应用https://github.com/121mc/NJU_Calendar_Importer_Flutter
 
-下载方式：在华为商城搜索 NJU课表导入
+下载方式：在华为应用市场搜索 NJU课表导入
 
 ## 项目说明
 

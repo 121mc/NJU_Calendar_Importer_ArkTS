@@ -7827,3 +7827,14 @@ at D:\NJU_Calendar_Importer_ArkTS\AppScope\resources\base\media\app_icon.png
 [2026-03-06T13:52:13.667] [DEBUG] debug-file - Update task :SignApp input file:D:\NJU_Calendar_Importer_ArkTS\build\outputs\default\NJU_Calendar_Importer_ArkTS-default-unsigned.app cache by regenerate.
 [2026-03-06T13:52:13.667] [DEBUG] debug-file - Update task :SignApp output file:D:\NJU_Calendar_Importer_ArkTS\build\outputs\default\NJU_Calendar_Importer_ArkTS-default-signed.app cache.
 [2026-03-06T13:52:13.667] [DEBUG] debug-file - Incremental task :SignApp post-execution cost:1 ms .
+[2026-03-06T13:52:13.686] [DEBUG] debug-file - Cleanup worker 22.
+[2026-03-06T13:52:13.686] [DEBUG] debug-file - Worker 22 has been cleaned up.
+[2026-03-06T13:52:13.686] [DEBUG] debug-file - Current idle worker size: 1.
+[2026-03-06T13:52:13.686] [DEBUG] debug-file - Current resident worker size: 2.
+[2026-03-06T13:52:13.686] [DEBUG] debug-file - hvigor build process will be closed.
+[2026-03-06T13:52:13.686] [DEBUG] debug-file - java daemon socket close code:1000 reason:close by user
+[2026-03-06T13:52:13.691] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-06T13:52:13.691] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-06T13:52:13.691] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-06T13:52:13.692] [DEBUG] debug-file - worker[22] exits with exit code 1.
+[2026-03-06T13:52:13.692] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
