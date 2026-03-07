@@ -16994,3 +16994,681 @@ Require stack:
 [2026-03-06T22:39:53.986] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\libs\default cache by regenerate.
 [2026-03-06T22:39:53.986] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\symbol cache.
 [2026-03-06T22:39:53.986] [DEBUG] debug-file - Incremental task entry:default@CollectDebugSymbol post-execution cost:1 ms .
+[2026-03-06T22:39:54.007] [DEBUG] debug-file - Cleanup worker 22.
+[2026-03-06T22:39:54.007] [DEBUG] debug-file - Worker 22 has been cleaned up.
+[2026-03-06T22:39:54.007] [DEBUG] debug-file - Current idle worker size: 1.
+[2026-03-06T22:39:54.007] [DEBUG] debug-file - Current resident worker size: 2.
+[2026-03-06T22:39:54.008] [DEBUG] debug-file - hvigor build process will be closed.
+[2026-03-06T22:39:54.008] [DEBUG] debug-file - java daemon socket close code:1000 reason:close by user
+[2026-03-06T22:39:54.011] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-06T22:39:54.011] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-06T22:39:54.011] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-06T22:39:54.012] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-06T22:39:54.013] [DEBUG] debug-file - worker[22] exits with exit code 1.
+[2026-03-07T12:00:26.702] [DEBUG] debug-file - java daemon tryConnect failed Error: connect ECONNREFUSED 127.0.0.1:45050
+[2026-03-07T12:00:26.707] [DEBUG] debug-file - java daemon started at port 45050 pid 21592
+[2026-03-07T12:00:24.799] [DEBUG] debug-file - env: nodejsVersion=v18.20.1
+[2026-03-07T12:00:24.955] [DEBUG] debug-file - env: daemon=true
+[2026-03-07T12:00:24.799] [DEBUG] debug-file - env: hvigor-config.json5 content = {
+  modelVersion: '5.0.0',
+  dependencies: {},
+  debugging: { stacktrace: true }
+}
+[2026-03-07T12:00:27.520] [DEBUG] debug-file - session manager: set active socket. socketId=a0P5wHOgo85sAWouAAAB
+[2026-03-07T12:00:27.528] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-07T12:00:27.531] [DEBUG] debug-file - Since there is no instance or instance is terminated, create a new worker pool.
+[2026-03-07T12:00:27.531] [DEBUG] debug-file - Worker pool is initialized with config:  {
+  minPoolNum: 2,
+  maxPoolNum: undefined,
+  maxCoreSize: undefined,
+  cacheCapacity: undefined,
+  cacheTtl: undefined
+}
+[2026-03-07T12:00:27.532] [DEBUG] debug-file - Create  resident worker with id: 0.
+[2026-03-07T12:00:27.533] [DEBUG] debug-file - Create  resident worker with id: 1.
+[2026-03-07T12:00:27.534] [DEBUG] debug-file - Workers' log level updated to INFO
+[2026-03-07T12:00:27.539] [DEBUG] debug-file - Hvigor init with startParameters:{
+  hvigorfileTypeCheck: false,
+  parallelExecution: true,
+  incrementalExecution: true,
+  printStackTrace: true,
+  daemon: true,
+  analyze: 0,
+  logLevel: Level { level: 20000, levelStr: 'INFO', colour: 'green' },
+  optimizationStrategy: 'memory',
+  hotCompile: undefined,
+  hotReloadBuild: undefined,
+  customizedParam: undefined
+}
+[2026-03-07T12:00:27.560] [DEBUG] debug-file - Cache service initialization finished in 20 ms 
+[2026-03-07T12:00:27.561] [DEBUG] debug-file - hvigorfile, resolving D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+[2026-03-07T12:00:43.108] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2026-03-07T12:00:43.108] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2026-03-07T12:00:43.109] [DEBUG] debug-file - Starting plugin build process
+[2026-03-07T12:00:43.109] [DEBUG] debug-file - App plugin prepare start...
+[2026-03-07T12:00:43.109] [DEBUG] debug-file - App plugin prepare end...
+[2026-03-07T12:00:43.109] [DEBUG] debug-file - App plugin creating...
+[2026-03-07T12:00:43.231] [DEBUG] debug-file - App plugin register hook start...
+[2026-03-07T12:00:43.231] [DEBUG] debug-file - App plugin register hook end...
+[2026-03-07T12:00:43.232] [DEBUG] debug-file - Plugin build process completed
+[2026-03-07T12:00:43.232] [DEBUG] debug-file - Start initialize project's product build option map with build mode debug.
+[2026-03-07T12:00:43.232] [DEBUG] debug-file - Picking option from product 'default' with build mode 'debug'.
+[2026-03-07T12:00:43.233] [DEBUG] debug-file - Product 'default' build option initialized
+[2026-03-07T12:00:43.233] [DEBUG] debug-file - End initialize project's product build option map with build mode 'debug'.
+[2026-03-07T12:00:43.234] [DEBUG] debug-file - Obtain build option for product 'default'in this build.
+[2026-03-07T12:00:43.235] [DEBUG] debug-file - D:\NJU_Calendar_Importer_ArkTS\build\cache\default\remote_hsp\remoteHspCache.json not exists.
+[2026-03-07T12:00:43.242] [DEBUG] debug-file - Local scan or download HarmonyOS sdk components toolchains,ets,js,native,previewer
+[2026-03-07T12:00:43.245] [DEBUG] debug-file - Local scan or download hmscore sdk components toolchains,ets,native
+[2026-03-07T12:00:43.246] [DEBUG] debug-file - Start recording SDK configuration permission data.
+[2026-03-07T12:00:43.273] [DEBUG] debug-file - Sdk init in 32 ms 
+[2026-03-07T12:00:43.278] [DEBUG] debug-file - Project task initialization takes 4 ms 
+[2026-03-07T12:00:43.278] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2026-03-07T12:00:43.278] [DEBUG] debug-file - hvigorfile, no custom plugins were found in D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+[2026-03-07T12:00:43.278] [DEBUG] debug-file - hvigorfile, resolve finished D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+[2026-03-07T12:00:43.278] [DEBUG] debug-file - hvigorfile, resolving D:\NJU_Calendar_Importer_ArkTS\entry\hvigorfile.ts
+[2026-03-07T12:00:43.288] [DEBUG] debug-file - hvigorfile, require result:  { default: { plugins: [] } }
+[2026-03-07T12:00:43.288] [DEBUG] debug-file - hvigorfile, binding system plugins null
+[2026-03-07T12:00:43.288] [DEBUG] debug-file - Starting plugin build process
+[2026-03-07T12:00:43.288] [DEBUG] debug-file - Hap plugin creating...
+[2026-03-07T12:00:43.289] [DEBUG] debug-file - failed to load cangjie to dynamically generate schemas: Error: Cannot find module '@ohos/cangjie-build-support/index'
+Require stack:
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\hooks\cangjie-register.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\strategy\stage-init-strategy.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\builder\abstract-plugin-builder.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\builder\app-plugin-builder.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\src\plugin\factory\plugin-factory.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor-ohos-plugin\index.js
+- D:\NJU_Calendar_Importer_ArkTS\hvigorfile.ts
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\internal\lifecycle\configuration.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\boot\index.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\daemon\cluster\worker-process-lifecycle.js
+- C:\Program Files\Huawei\DevEco Studio\tools\hvigor\hvigor\src\base\daemon\process\daemon-process-boot-script.js
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Target 'default' config initialized
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=release
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Target 'default' config initialized
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Start initialize module-target build option map, moduleName=entry, buildMode=debug
+[2026-03-07T12:00:43.296] [DEBUG] debug-file - Target 'default' config initialized
+[2026-03-07T12:00:43.297] [DEBUG] debug-file - Module 'entry' target 'default' build option initialized
+[2026-03-07T12:00:43.297] [DEBUG] debug-file - End initialize module-target build option map, moduleName=entry
+[2026-03-07T12:00:43.297] [DEBUG] debug-file - Obtain build option for module 'entry' target 'default'in this build.
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - Module entry task initialization takes 3 ms 
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - Hap plugin register hook start...
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - Hap plugin register hook end...
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - Plugin build process completed
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - hvigorfile, binding custom plugins []
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - hvigorfile, no custom plugins were found in D:\NJU_Calendar_Importer_ArkTS\entry\hvigorfile.ts
+[2026-03-07T12:00:43.300] [DEBUG] debug-file - hvigorfile, resolve finished D:\NJU_Calendar_Importer_ArkTS\entry\hvigorfile.ts
+[2026-03-07T12:00:43.352] [DEBUG] debug-file - hvigorfile, resolve hvigorfile dependencies in 52 ms 
+[2026-03-07T12:00:43.352] [DEBUG] debug-file - project has submodules:entry
+[2026-03-07T12:00:43.359] [DEBUG] debug-file - start to load updatedOhPackageInfo to the disk
+[2026-03-07T12:00:43.363] [DEBUG] debug-file - load to the disk finished
+[2026-03-07T12:00:43.363] [DEBUG] debug-file - Start to initialize dependency information.
+[2026-03-07T12:00:43.365] [DEBUG] debug-file - Module NJU_Calendar_Importer_ArkTS Collected Dependency: 
+[2026-03-07T12:00:43.365] [DEBUG] debug-file - Module NJU_Calendar_Importer_ArkTS's total dependency: 0
+[2026-03-07T12:00:43.366] [DEBUG] debug-file - Start to initialize dependency information.
+[2026-03-07T12:00:43.368] [DEBUG] debug-file - Module entry Collected Dependency: 
+[2026-03-07T12:00:43.368] [DEBUG] debug-file - Module entry's total dependency: 0
+[2026-03-07T12:00:43.370] [DEBUG] debug-file - Configuration phase cost:15 s 811 ms 
+[2026-03-07T12:00:43.372] [DEBUG] debug-file - Configuration task cost before running: 15 s 837 ms 
+[2026-03-07T12:00:43.376] [DEBUG] debug-file - Executing task :entry:default@PreBuild
+[2026-03-07T12:00:43.377] [DEBUG] debug-file - Task 'entry:default@PreBuild' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.382] [DEBUG] debug-file - Incremental task entry:default@PreBuild pre-execution cost: 4 ms .
+[2026-03-07T12:00:43.382] [DEBUG] debug-file - entry : default@PreBuild cost memory 0.6450576782226562
+[2026-03-07T12:00:43.384] [INFO] debug-file - UP-TO-DATE :entry:default@PreBuild...  
+[2026-03-07T12:00:43.384] [DEBUG] debug-file - Executing task :entry:default@CreateModuleInfo
+[2026-03-07T12:00:43.384] [DEBUG] debug-file - Task 'entry:default@CreateModuleInfo' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.385] [DEBUG] debug-file - entry : default@CreateModuleInfo cost memory 0.05321502685546875
+[2026-03-07T12:00:43.385] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 851 ms 
+[2026-03-07T12:00:43.385] [INFO] debug-file - Finished :entry:default@CreateModuleInfo... after 1 ms 
+[2026-03-07T12:00:43.387] [DEBUG] debug-file - Executing task :entry:default@GenerateMetadata
+[2026-03-07T12:00:43.387] [DEBUG] debug-file - Task 'entry:default@GenerateMetadata' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.388] [DEBUG] debug-file - Incremental task entry:default@GenerateMetadata pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.388] [DEBUG] debug-file - entry : default@GenerateMetadata cost memory 0.09764862060546875
+[2026-03-07T12:00:43.388] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateMetadata...  
+[2026-03-07T12:00:43.389] [DEBUG] debug-file - Executing task :entry:default@ConfigureCmake
+[2026-03-07T12:00:43.389] [DEBUG] debug-file - entry : default@ConfigureCmake cost memory 0.0146026611328125
+[2026-03-07T12:00:43.389] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 855 ms 
+[2026-03-07T12:00:43.389] [INFO] debug-file - Finished :entry:default@ConfigureCmake... after 1 ms 
+[2026-03-07T12:00:43.390] [DEBUG] debug-file - Executing task :entry:default@MergeProfile
+[2026-03-07T12:00:43.390] [DEBUG] debug-file - Task 'entry:default@MergeProfile' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.391] [DEBUG] debug-file - Incremental task entry:default@MergeProfile pre-execution cost: 2 ms .
+[2026-03-07T12:00:43.391] [DEBUG] debug-file - entry : default@MergeProfile cost memory 0.15790557861328125
+[2026-03-07T12:00:43.392] [INFO] debug-file - UP-TO-DATE :entry:default@MergeProfile...  
+[2026-03-07T12:00:43.392] [DEBUG] debug-file - Executing task :entry:default@CreateBuildProfile
+[2026-03-07T12:00:43.393] [DEBUG] debug-file - Task 'entry:default@CreateBuildProfile' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.394] [DEBUG] debug-file - Incremental task entry:default@CreateBuildProfile pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.394] [DEBUG] debug-file - entry : default@CreateBuildProfile cost memory 0.0985565185546875
+[2026-03-07T12:00:43.394] [INFO] debug-file - UP-TO-DATE :entry:default@CreateBuildProfile...  
+[2026-03-07T12:00:43.395] [DEBUG] debug-file - Executing task :entry:default@PreCheckSyscap
+[2026-03-07T12:00:43.395] [DEBUG] debug-file - entry : default@PreCheckSyscap cost memory 0.01476287841796875
+[2026-03-07T12:00:43.395] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 861 ms 
+[2026-03-07T12:00:43.395] [INFO] debug-file - Finished :entry:default@PreCheckSyscap... after 1 ms 
+[2026-03-07T12:00:43.396] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgContextInfo
+[2026-03-07T12:00:43.401] [DEBUG] debug-file - Task 'entry:default@GeneratePkgContextInfo' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.401] [DEBUG] debug-file - entry : default@GeneratePkgContextInfo cost memory 0.31607818603515625
+[2026-03-07T12:00:43.401] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 867 ms 
+[2026-03-07T12:00:43.401] [INFO] debug-file - Finished :entry:default@GeneratePkgContextInfo... after 6 ms 
+[2026-03-07T12:00:43.403] [DEBUG] debug-file - Executing task :entry:default@ProcessIntegratedHsp
+[2026-03-07T12:00:43.404] [DEBUG] debug-file - entry:default@ProcessIntegratedHsp is not up-to-date, since the output file 'D:\NJU_Calendar_Importer_ArkTS\build\cache\default\integrated_hsp\integratedHspCache.json' does not exist.
+[2026-03-07T12:00:43.404] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.404] [DEBUG] debug-file - entry : default@ProcessIntegratedHsp cost memory 0.0601959228515625
+[2026-03-07T12:00:43.404] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 870 ms 
+[2026-03-07T12:00:43.404] [INFO] debug-file - Finished :entry:default@ProcessIntegratedHsp... after 1 ms 
+[2026-03-07T12:00:43.405] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithCmake
+[2026-03-07T12:00:43.405] [DEBUG] debug-file - entry : default@BuildNativeWithCmake cost memory 0.0175933837890625
+[2026-03-07T12:00:43.405] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 871 ms 
+[2026-03-07T12:00:43.405] [INFO] debug-file - Finished :entry:default@BuildNativeWithCmake... after 1 ms 
+[2026-03-07T12:00:43.406] [DEBUG] debug-file - Executing task :entry:default@MakePackInfo
+[2026-03-07T12:00:43.407] [DEBUG] debug-file - Incremental task entry:default@MakePackInfo pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.407] [DEBUG] debug-file - entry : default@MakePackInfo cost memory 0.110870361328125
+[2026-03-07T12:00:43.407] [INFO] debug-file - UP-TO-DATE :entry:default@MakePackInfo...  
+[2026-03-07T12:00:43.408] [DEBUG] debug-file - Executing task :entry:default@SyscapTransform
+[2026-03-07T12:00:43.408] [DEBUG] debug-file - File: 'D:\NJU_Calendar_Importer_ArkTS\entry\src\main\syscap.json' from 'sysCapJsonPath' is not exists, just ignore.
+[2026-03-07T12:00:43.408] [DEBUG] debug-file - Task 'entry:default@SyscapTransform' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.416] [DEBUG] debug-file - entry:default@SyscapTransform is not up-to-date, since the output file 'D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\syscap\default\rpcid.sc' does not exist.
+[2026-03-07T12:00:43.416] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform pre-execution cost: 8 ms .
+[2026-03-07T12:00:43.416] [DEBUG] debug-file - entry : default@SyscapTransform cost memory 0.17594146728515625
+[2026-03-07T12:00:43.416] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 882 ms 
+[2026-03-07T12:00:43.417] [INFO] debug-file - Finished :entry:default@SyscapTransform... after 9 ms 
+[2026-03-07T12:00:43.418] [DEBUG] debug-file - Executing task :entry:default@ProcessProfile
+[2026-03-07T12:00:43.426] [DEBUG] debug-file - Task 'entry:default@ProcessProfile' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.427] [DEBUG] debug-file - Incremental task entry:default@ProcessProfile pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.427] [DEBUG] debug-file - entry : default@ProcessProfile cost memory 0.16797637939453125
+[2026-03-07T12:00:43.427] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessProfile...  
+[2026-03-07T12:00:43.428] [DEBUG] debug-file - Executing task :entry:default@ProcessRouterMap
+[2026-03-07T12:00:43.429] [DEBUG] debug-file - Incremental task entry:default@ProcessRouterMap pre-execution cost: 2 ms .
+[2026-03-07T12:00:43.429] [DEBUG] debug-file - entry : default@ProcessRouterMap cost memory 0.14087677001953125
+[2026-03-07T12:00:43.429] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessRouterMap...  
+[2026-03-07T12:00:43.430] [DEBUG] debug-file - Executing task :entry:default@ProcessShareConfig
+[2026-03-07T12:00:43.431] [DEBUG] debug-file - Incremental task entry:default@ProcessShareConfig pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.431] [DEBUG] debug-file - entry : default@ProcessShareConfig cost memory 0.11499786376953125
+[2026-03-07T12:00:43.431] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessShareConfig...  
+[2026-03-07T12:00:43.432] [DEBUG] debug-file - Executing task :entry:default@ProcessStartupConfig
+[2026-03-07T12:00:43.432] [DEBUG] debug-file - Task 'entry:default@ProcessStartupConfig' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.432] [DEBUG] debug-file - entry:default@ProcessStartupConfig is not up-to-date, since the output file 'D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\startup\default\startup_config.json' does not exist.
+[2026-03-07T12:00:43.432] [DEBUG] debug-file - Incremental task entry:default@ProcessStartupConfig pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.433] [DEBUG] debug-file - entry : default@ProcessStartupConfig cost memory 0.10150909423828125
+[2026-03-07T12:00:43.433] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 899 ms 
+[2026-03-07T12:00:43.433] [INFO] debug-file - Finished :entry:default@ProcessStartupConfig... after 1 ms 
+[2026-03-07T12:00:43.434] [DEBUG] debug-file - Executing task :entry:default@BuildNativeWithNinja
+[2026-03-07T12:00:43.434] [DEBUG] debug-file - entry : default@BuildNativeWithNinja cost memory 0.020965576171875
+[2026-03-07T12:00:43.434] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 900 ms 
+[2026-03-07T12:00:43.434] [INFO] debug-file - Finished :entry:default@BuildNativeWithNinja... after 1 ms 
+[2026-03-07T12:00:43.435] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@ProcessResource
+[2026-03-07T12:00:43.442] [DEBUG] debug-file - Executing task :entry:default@ProcessResource
+[2026-03-07T12:00:43.442] [DEBUG] debug-file - Task 'entry:default@ProcessResource' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.443] [DEBUG] debug-file - Incremental task entry:default@ProcessResource pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.443] [DEBUG] debug-file - entry : default@ProcessResource cost memory 0.14881134033203125
+[2026-03-07T12:00:43.444] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessResource...  
+[2026-03-07T12:00:43.446] [DEBUG] debug-file - Executing task :entry:default@GenerateLoaderJson
+[2026-03-07T12:00:43.446] [DEBUG] debug-file - Task 'entry:default@GenerateLoaderJson' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.455] [DEBUG] debug-file - Incremental task entry:default@GenerateLoaderJson pre-execution cost: 3 ms .
+[2026-03-07T12:00:43.455] [DEBUG] debug-file - entry : default@GenerateLoaderJson cost memory 0.4196624755859375
+[2026-03-07T12:00:43.457] [INFO] debug-file - UP-TO-DATE :entry:default@GenerateLoaderJson...  
+[2026-03-07T12:00:43.457] [DEBUG] debug-file - Executing task :entry:default@ProcessLibs
+[2026-03-07T12:00:43.459] [DEBUG] debug-file - Incremental task entry:default@ProcessLibs pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.459] [DEBUG] debug-file - entry : default@ProcessLibs cost memory 0.1131744384765625
+[2026-03-07T12:00:43.459] [INFO] debug-file - UP-TO-DATE :entry:default@ProcessLibs...  
+[2026-03-07T12:00:43.460] [DEBUG] debug-file - restool module names: entry; moduleName=entry, taskName=default@CompileResource
+[2026-03-07T12:00:43.460] [DEBUG] debug-file - Executing task :entry:default@CompileResource
+[2026-03-07T12:00:43.471] [DEBUG] debug-file - Incremental task entry:default@CompileResource pre-execution cost: 5 ms .
+[2026-03-07T12:00:43.471] [DEBUG] debug-file - entry : default@CompileResource cost memory 0.5003585815429688
+[2026-03-07T12:00:43.472] [INFO] debug-file - UP-TO-DATE :entry:default@CompileResource...  
+[2026-03-07T12:00:43.474] [DEBUG] debug-file - Executing task :entry:default@DoNativeStrip
+[2026-03-07T12:00:43.475] [DEBUG] debug-file - Task 'entry:default@DoNativeStrip' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.475] [DEBUG] debug-file - Incremental task entry:default@DoNativeStrip pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.475] [DEBUG] debug-file - entry : default@DoNativeStrip cost memory 0.07938385009765625
+[2026-03-07T12:00:43.475] [INFO] debug-file - UP-TO-DATE :entry:default@DoNativeStrip...  
+[2026-03-07T12:00:43.476] [DEBUG] debug-file - Executing task :entry:default@CompileArkTS
+[2026-03-07T12:00:43.477] [DEBUG] debug-file - obfuscationOptions: undefined
+[2026-03-07T12:00:43.477] [DEBUG] debug-file - Task 'entry:default@CompileArkTS' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.482] [DEBUG] debug-file - entry:default@CompileArkTS is not up-to-date, since the input file 'D:\NJU_Calendar_Importer_ArkTS\entry\src\main\ets' has been changed.
+[2026-03-07T12:00:43.482] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS pre-execution cost: 4 ms .
+[2026-03-07T12:00:43.500] [DEBUG] debug-file - build config:
+[2026-03-07T12:00:43.500] [DEBUG] debug-file - {
+  moduleType: 'entry',
+  perf: 0,
+  targetName: '.default',
+  packageManagerType: 'ohpm',
+  localPropertiesPath: 'D:\\NJU_Calendar_Importer_ArkTS\\local.properties',
+  isPreview: false,
+  isOhosTest: false,
+  isLocalTest: false,
+  buildMode: 'Debug',
+  hotReloadBuild: undefined,
+  watchMode: 'false',
+  aceProfilePath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\res\\default\\resources\\base\\profile',
+  etsLoaderPath: 'C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\build-tools\\ets-loader',
+  modulePath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry',
+  testFrameworkPar: {
+    testMode: undefined,
+    coveragePathFilter: undefined,
+    coverageMode: undefined
+  },
+  needCoverageInsert: false,
+  debugLine: false,
+  projectTopDir: 'D:\\NJU_Calendar_Importer_ArkTS',
+  compileSdkVersion: 22,
+  compatibleSdkVersion: 22,
+  originCompatibleSdkVersion: '6.0.2(22)',
+  compatibleSdkVersionStage: undefined,
+  bundleName: 'c***r',
+  etsLoaderVersion: '6.0.2.130',
+  etsLoaderReleaseType: 'Release',
+  aotCompileMode: 'type',
+  apPath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\modules.ap',
+  entryModuleName: 'entry',
+  entryModuleVersion: '1.2.1',
+  entryPackageName: 'entry',
+  allModuleNameHash: 'b33adb2a029693cf45db1cfeae0a3c8a6ac690bd0fe4ce92e4adb5ee37267b46',
+  externalApiPaths: [
+    'C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\hms\\ets'
+  ],
+  compilerTypes: [],
+  isCrossplatform: false,
+  hvigorPluginFile: undefined,
+  compilePluginPath: undefined,
+  buildGeneratedProfilePath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\generated\\profile\\default',
+  bundleType: 'app',
+  arkTSVersion: undefined,
+  apiVersion: 22,
+  needCompleteSourcesMap: false,
+  isFaMode: false,
+  buildDir: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build',
+  deviceTypes: [ 'phone' ],
+  pkgContextInfo: undefined,
+  ohPackagePathMap: {},
+  dependencyAliasMap: {},
+  permission: {
+    requestPermissions: [ [Object], [Object], [Object] ],
+    definePermissions: undefined
+  },
+  useGetCurrentBundleName: false,
+  projectArkOption: undefined,
+  sourceMapDir: undefined,
+  branchElimination: false,
+  transformLib: undefined,
+  tsImportSendable: false,
+  resolveConflictMode: true,
+  depName2RootPath: {},
+  depName2DepInfo: {},
+  rootPathSet: [ 'D:\\NJU_Calendar_Importer_ArkTS' ],
+  useNativeResolver: true,
+  shouldEmitJs: true,
+  useTscResolve: false,
+  singleFileEmit: false,
+  userProjectConfig: {
+    autoLazyImport: false,
+    allowEmptyBundleName: false,
+    reExportCheckMode: 'noCheck',
+    executionMode: 'memory',
+    usePathPlaceholder: false,
+    writeRollupCache: true,
+    isExpandImportEnabled: false,
+    expandImportExclude: '',
+    lazyImportExclude: '',
+    lazyImportInclude: '',
+    ignoreCrossplatformCheck: false,
+    isHarDeduplicateEnabled: false,
+    skipOhModulesLint: false,
+    enableStrictCheckOHModule: false,
+    disableSendableCheckRules: [],
+    useDeclarationFileSignature: false,
+    customizedOptions: undefined,
+    integratedHsp: false,
+    isPreloadSoEnabled: false
+  },
+  executionMode: 'memory',
+  arkCompileCachePath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\cache\\default\\default@CompileArkTS\\esmodule',
+  autoLazyFilter: undefined,
+  isHarDeduplicateEnabled: false,
+  intermediateHarDuplicateDirPath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\har_duplicate\\default',
+  autoLazyImport: false,
+  allowEmptyBundleName: false,
+  reExportCheckMode: 'noCheck',
+  usePathPlaceholder: false,
+  writeRollupCache: true,
+  isExpandImportEnabled: false,
+  expandImportExclude: '',
+  lazyImportExclude: '',
+  lazyImportInclude: '',
+  ignoreCrossplatformCheck: false,
+  skipOhModulesLint: false,
+  enableStrictCheckOHModule: false,
+  disableSendableCheckRules: [],
+  useDeclarationFileSignature: false,
+  customizedOptions: undefined,
+  integratedHsp: false,
+  isPreloadSoEnabled: false,
+  strictMode: undefined,
+  useNormalizedOHMUrl: false,
+  caseSensitiveCheck: false,
+  aceModuleJsonPath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\res\\default\\ark_module.json',
+  appResource: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\res\\default\\ResourceTable.txt',
+  rawFileResource: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\res\\default\\resources\\rawfile',
+  resourceTableHash: '53e0094d25bc7c2090bf0798c02eaa9e60c8640032a8fe19b9bcb6861799b2b9',
+  runtimeOS: 'HarmonyOS',
+  sdkInfo: 'false:22:6.0.2.130:Release',
+  aceModuleRoot: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets',
+  compileMode: 'esmodule',
+  aceSuperVisualPath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\supervisual',
+  aceBuildJson: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\loader\\default\\loader.json',
+  cachePath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\cache\\default\\default@CompileArkTS\\esmodule\\debug',
+  aceModuleBuild: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\loader_out\\default\\ets',
+  supportChunks: true,
+  declaredFilesPath: undefined,
+  shouldCollectDirectImportees: false,
+  isByteCodeHarOptimize: false,
+  expandImportPath: undefined,
+  pkgNameToPkgBriefInfo: {
+    entry: {
+      pkgRoot: 'D:\\NJU_Calendar_Importer_ArkTS\\entry',
+      originalSourceRoots: undefined,
+      sourceRoots: [Array],
+      pkgName: 'entry'
+    }
+  },
+  projectModel: {
+    'D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main': {
+      moduleName: 'entry',
+      modulePkgPath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry',
+      belongProjectPath: 'D:\\NJU_Calendar_Importer_ArkTS'
+    },
+    'D:\\NJU_Calendar_Importer_ArkTS\\entry': {
+      moduleName: 'entry',
+      modulePkgPath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry',
+      belongProjectPath: 'D:\\NJU_Calendar_Importer_ArkTS'
+    },
+    'D:\\NJU_Calendar_Importer_ArkTS': {
+      moduleName: 'NJU_Calendar_Importer_ArkTS',
+      modulePkgPath: 'D:\\NJU_Calendar_Importer_ArkTS',
+      belongProjectPath: 'D:\\NJU_Calendar_Importer_ArkTS'
+    }
+  },
+  pkgJsonFileHash: '9d693ef3e4acc0653dca578fa9358832bab20bc63f2b5bdc73d368447dc6a86d',
+  allModulePaths: [ 'D:\\NJU_Calendar_Importer_ArkTS\\entry' ],
+  routerMap: {},
+  obfuscationOptions: undefined,
+  byteCodeHarToDependencyKeys: undefined,
+  compileBlockPkg: [],
+  mockParams: {
+    decorator: '@MockSetup',
+    packageName: '@ohos/hamock',
+    etsSourceRootPath: 'src/main/ets',
+    mockConfigPath: undefined,
+    mockConfigKey2ModuleInfo: {},
+    source2ModuleIdMap: {}
+  },
+  copyCodeResourceEnable: true,
+  copyCodeResourceExcludes: [],
+  copyCodeResourceIncludes: undefined,
+  uiTransformOptimization: false,
+  sdkPath: 'C:/Program Files/Huawei/DevEco Studio/sdk',
+  needPreloadSoFileSet: {},
+  preloadSoFilePath: 'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\preload\\default\\preload.json',
+  useSourceHash: false,
+  localModuleParamMap: {},
+  otherPaths: {
+    'entry/*': [
+      '..\\*',
+      '..\\..\\..\\build\\default\\generated\\profile\\default\\*'
+    ]
+  },
+  collectImportersConfig: undefined
+}
+[2026-03-07T12:00:43.500] [DEBUG] debug-file - Compile arkts with external api path: C:\Program Files\Huawei\DevEco Studio\sdk\default\hms\ets
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - default@CompileArkTS work[0] is submitted.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - default@CompileArkTS work[0] is pushed to ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[23] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[22] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[21] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[20] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[19] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[18] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.501] [DEBUG] debug-file - A work dispatched to worker[17] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[16] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[15] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[14] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[13] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[12] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[11] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[10] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[9] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[8] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[7] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[6] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - A work dispatched to worker[5] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - Create  resident worker with id: 4.
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - default@CompileArkTS work[0] has been dispatched to worker[4].
+[2026-03-07T12:00:43.502] [DEBUG] debug-file - default@CompileArkTS work[0] is dispatched.
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - CopyResources startTime: 322340031229000
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - default@CompileArkTS work[1] is submitted.
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - default@CompileArkTS work[1] is pushed to ready queue.
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - A work dispatched to worker[23] failed because unable to get work from ready queue.
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - Create  resident worker with id: 22.
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - default@CompileArkTS work[1] has been dispatched to worker[22].
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - default@CompileArkTS work[1] is dispatched.
+[2026-03-07T12:00:43.503] [DEBUG] debug-file - entry : default@CompileArkTS cost memory 1.9012374877929688
+[2026-03-07T12:00:43.504] [DEBUG] debug-file - Executing task :entry:default@BuildJS
+[2026-03-07T12:00:43.505] [DEBUG] debug-file - Task 'entry:default@BuildJS' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.506] [DEBUG] debug-file - entry : default@BuildJS cost memory 0.14078521728515625
+[2026-03-07T12:00:43.506] [DEBUG] debug-file - runTaskFromQueue task cost before running: 15 s 972 ms 
+[2026-03-07T12:00:43.506] [INFO] debug-file - Finished :entry:default@BuildJS... after 2 ms 
+[2026-03-07T12:00:43.507] [DEBUG] debug-file - Executing task :entry:default@CacheNativeLibs
+[2026-03-07T12:00:43.507] [DEBUG] debug-file - Task 'entry:default@CacheNativeLibs' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:43.508] [DEBUG] debug-file - Incremental task entry:default@CacheNativeLibs pre-execution cost: 1 ms .
+[2026-03-07T12:00:43.508] [DEBUG] debug-file - entry : default@CacheNativeLibs cost memory 0.08913421630859375
+[2026-03-07T12:00:43.508] [INFO] debug-file - UP-TO-DATE :entry:default@CacheNativeLibs...  
+[2026-03-07T12:00:44.144] [DEBUG] debug-file - worker[22] has one work done.
+[2026-03-07T12:00:44.144] [DEBUG] debug-file - CopyResources is end, endTime: 322340672445000
+[2026-03-07T12:00:44.144] [DEBUG] debug-file - default@CompileArkTS work[1] done.
+[2026-03-07T12:00:44.144] [DEBUG] debug-file - A work dispatched to worker[22] failed because unable to get work from ready queue.
+[2026-03-07T12:00:58.003] [WARN] debug-file - [33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PreferenceStore.ets:10:12
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PreferenceStore.ets:15:5
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PreferenceStore.ets:16:11
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PreferenceStore.ets:21:15
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PreferenceStore.ets:35:5
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PreferenceStore.ets:36:11
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/AuthService.ets:41:28
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/AuthService.ets:42:29
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/AuthService.ets:43:32
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/NjuScheduleService.ets:423:68
+ 'encode' has been deprecated.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/services/PermissionService.ets:10:24
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/pages/Index.ets:123:16
+ 'pushUrl' has been deprecated.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/pages/Index.ets:174:5
+ Function may throw exceptions. Special handling is required.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/pages/Index.ets:174:18
+ 'showToast' has been deprecated.
+[39m[39m
+[33mWARN: [33m[33mArkTS:WARN File: D:/NJU_Calendar_Importer_ArkTS/entry/src/main/ets/pages/Index.ets:396:20
+ 'pushUrl' has been deprecated.
+[39m[39m
+
+[2026-03-07T12:00:58.004] [DEBUG] debug-file - Ark compile task finished.finished time is 322354532406500
+[2026-03-07T12:00:58.004] [DEBUG] debug-file - worker[4] has one work done.
+[2026-03-07T12:00:58.005] [DEBUG] debug-file - default@CompileArkTS work[0] done.
+[2026-03-07T12:00:58.006] [DEBUG] debug-file - A work dispatched to worker[4] failed because unable to get work from ready queue.
+[2026-03-07T12:00:58.007] [INFO] debug-file - Finished :entry:default@CompileArkTS... after 13 s 111 ms 
+[2026-03-07T12:00:58.008] [DEBUG] debug-file - Executing task :entry:default@GeneratePkgModuleJson
+[2026-03-07T12:00:58.008] [DEBUG] debug-file - File: 'D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\preload\default\preload.json' from 'preloadSoJsonPath' is not exists, just ignore.
+[2026-03-07T12:00:58.008] [DEBUG] debug-file - Error occurs while handling @Input 'shouldDeduplicateHar': The "data" argument must be of type string or an instance of Buffer, TypedArray, or DataView. Received undefined
+[2026-03-07T12:00:58.008] [DEBUG] debug-file - Task 'entry:default@GeneratePkgModuleJson' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:58.009] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgModuleJson pre-execution cost: 1 ms .
+[2026-03-07T12:00:58.009] [DEBUG] debug-file - entry : default@GeneratePkgModuleJson cost memory 0.10746002197265625
+[2026-03-07T12:00:58.009] [INFO] debug-file - UP-TO-DATE :entry:default@GeneratePkgModuleJson...  
+[2026-03-07T12:00:58.010] [DEBUG] debug-file - Executing task :entry:default@ProcessCompiledResources
+[2026-03-07T12:00:58.010] [DEBUG] debug-file - File: 'D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\preload\default\preload.json' from 'preloadSoJsonPath' is not exists, just ignore.
+[2026-03-07T12:00:58.010] [DEBUG] debug-file - Task 'entry:default@ProcessCompiledResources' cost while wrapping incremental declarations: 1 ms 
+[2026-03-07T12:00:58.010] [DEBUG] debug-file - entry : default@ProcessCompiledResources cost memory 0.06128692626953125
+[2026-03-07T12:00:58.010] [DEBUG] debug-file - runTaskFromQueue task cost before running: 30 s 476 ms 
+[2026-03-07T12:00:58.010] [INFO] debug-file - Finished :entry:default@ProcessCompiledResources... after 1 ms 
+[2026-03-07T12:00:58.012] [DEBUG] debug-file - Executing task :entry:default@PackageHap
+[2026-03-07T12:00:58.016] [DEBUG] debug-file - entry:default@PackageHap is not up-to-date, since the input file 'D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader_out\default\ets' has been changed.
+[2026-03-07T12:00:58.016] [DEBUG] debug-file - Incremental task entry:default@PackageHap pre-execution cost: 4 ms .
+[2026-03-07T12:00:58.017] [DEBUG] debug-file - Use tool [C:\Program Files\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\lib\app_packing_tool.jar]
+ [
+  'java',
+  '-Dfile.encoding=GBK',
+  '-jar',
+  'C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\toolchains\\lib\\app_packing_tool.jar',
+  '--mode',
+  'hap',
+  '--force',
+  'true',
+  '--lib-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\stripped_native_libs\\default',
+  '--json-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\package\\default\\module.json',
+  '--resources-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\res\\default\\resources',
+  '--index-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\res\\default\\resources.index',
+  '--pack-info-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\outputs\\default\\pack.info',
+  '--out-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\outputs\\default\\entry-default-unsigned.hap',
+  '--ets-path',
+  'D:\\NJU_Calendar_Importer_ArkTS\\entry\\build\\default\\intermediates\\loader_out\\default\\ets'
+]
+[2026-03-07T12:00:58.249] [DEBUG] debug-file - java daemon socket received message:{"code":0,"message":"pack success"}
+[2026-03-07T12:00:58.252] [DEBUG] debug-file - entry : default@PackageHap cost memory -0.158355712890625
+[2026-03-07T12:00:58.252] [DEBUG] debug-file - runTaskFromQueue task cost before running: 30 s 717 ms 
+[2026-03-07T12:00:58.252] [INFO] debug-file - Finished :entry:default@PackageHap... after 240 ms 
+[2026-03-07T12:00:58.253] [DEBUG] debug-file - Executing task :entry:default@PackingCheck
+[2026-03-07T12:00:58.259] [DEBUG] debug-file - entry : default@PackingCheck cost memory 0.46829986572265625
+[2026-03-07T12:00:58.259] [DEBUG] debug-file - runTaskFromQueue task cost before running: 30 s 725 ms 
+[2026-03-07T12:00:58.260] [INFO] debug-file - Finished :entry:default@PackingCheck... after 7 ms 
+[2026-03-07T12:00:58.261] [DEBUG] debug-file - Executing task :entry:default@SignHap
+[2026-03-07T12:00:58.262] [DEBUG] debug-file - entry:default@SignHap is not up-to-date, since the input file 'D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\entry-default-unsigned.hap' has been changed.
+[2026-03-07T12:00:58.262] [DEBUG] debug-file - Incremental task entry:default@SignHap pre-execution cost: 1 ms .
+[2026-03-07T12:00:58.297] [DEBUG] debug-file - java daemon socket close code:1000 reason:close by user
+[2026-03-07T12:00:58.685] [DEBUG] debug-file - java daemon socket received message:{"code":0,"message":"verify profile success"}
+[2026-03-07T12:00:58.694] [DEBUG] debug-file - java daemon socket close code:1000 reason:close by user
+[2026-03-07T12:00:58.877] [DEBUG] debug-file - java daemon socket received message:{"code":0,"message":"sign app success"}
+[2026-03-07T12:00:58.878] [DEBUG] debug-file - entry : default@SignHap cost memory 0.673309326171875
+[2026-03-07T12:00:58.878] [DEBUG] debug-file - runTaskFromQueue task cost before running: 31 s 344 ms 
+[2026-03-07T12:00:58.879] [INFO] debug-file - Finished :entry:default@SignHap... after 618 ms 
+[2026-03-07T12:00:58.880] [DEBUG] debug-file - Executing task :entry:default@CollectDebugSymbol
+[2026-03-07T12:00:58.881] [DEBUG] debug-file - entry : default@CollectDebugSymbol cost memory 0.08519744873046875
+[2026-03-07T12:00:58.881] [DEBUG] debug-file - runTaskFromQueue task cost before running: 31 s 347 ms 
+[2026-03-07T12:00:58.881] [INFO] debug-file - Finished :entry:default@CollectDebugSymbol... after 1 ms 
+[2026-03-07T12:00:58.881] [DEBUG] debug-file - Executing task :entry:assembleHap
+[2026-03-07T12:00:58.882] [DEBUG] debug-file - entry : assembleHap cost memory 0.01287841796875
+[2026-03-07T12:00:58.882] [DEBUG] debug-file - runTaskFromQueue task cost before running: 31 s 347 ms 
+[2026-03-07T12:00:58.882] [INFO] debug-file - Finished :entry:assembleHap... after 1 ms 
+[2026-03-07T12:00:58.898] [INFO] debug-file - BUILD SUCCESSFUL in 31 s 364 ms 
+[2026-03-07T12:00:58.898] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@PreBuild is up-to-date.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - Update task entry:default@CreateModuleInfo output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\generated\profile\default\ModuleInfo.ts cache.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - Incremental task entry:default@CreateModuleInfo post-execution cost:1 ms .
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateMetadata is up-to-date.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MergeProfile is up-to-date.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CreateBuildProfile is up-to-date.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - Update task entry:default@GeneratePkgContextInfo output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader\default\pkgContextInfo.json cache.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - Incremental task entry:default@GeneratePkgContextInfo post-execution cost:1 ms .
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - Update task entry:default@ProcessIntegratedHsp output file:D:\NJU_Calendar_Importer_ArkTS\build\cache\default\integrated_hsp\integratedHspCache.json cache.
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - Incremental task entry:default@ProcessIntegratedHsp post-execution cost:1 ms .
+[2026-03-07T12:00:58.899] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@MakePackInfo is up-to-date.
+[2026-03-07T12:00:58.900] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:C:\Program Files\Huawei\DevEco Studio\sdk\default\openharmony\toolchains\syscap_tool.exe cache by regenerate.
+[2026-03-07T12:00:58.900] [DEBUG] debug-file - Update task entry:default@SyscapTransform input file:C:\Program Files\Huawei\DevEco Studio\sdk\default\openharmony\ets\api\device-define cache by regenerate.
+[2026-03-07T12:00:58.900] [DEBUG] debug-file - Update task entry:default@SyscapTransform output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\syscap\default\rpcid.sc cache.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - Incremental task entry:default@SyscapTransform post-execution cost:2 ms .
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessProfile is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessRouterMap is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessShareConfig is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - Update task entry:default@ProcessStartupConfig output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\startup\default\startup_config.json cache.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - Incremental task entry:default@ProcessStartupConfig post-execution cost:1 ms .
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessResource is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GenerateLoaderJson is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@ProcessLibs is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CompileResource is up-to-date.
+[2026-03-07T12:00:58.901] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@DoNativeStrip is up-to-date.
+[2026-03-07T12:00:58.902] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader\default cache by regenerate.
+[2026-03-07T12:00:58.902] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\ResourceTable.txt cache by regenerate.
+[2026-03-07T12:00:58.902] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\ark_module.json cache by regenerate.
+[2026-03-07T12:00:58.902] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\resources\base\profile cache by regenerate.
+[2026-03-07T12:00:58.903] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:D:\NJU_Calendar_Importer_ArkTS\entry\src\main\ets cache from map.
+[2026-03-07T12:00:58.903] [DEBUG] debug-file - Update task entry:default@CompileArkTS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\generated\profile\default\BuildProfile.ets cache by regenerate.
+[2026-03-07T12:00:58.903] [DEBUG] debug-file - Update task entry:default@CompileArkTS output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader_out\default\ets cache.
+[2026-03-07T12:00:58.903] [DEBUG] debug-file - Incremental task entry:default@CompileArkTS post-execution cost:3 ms .
+[2026-03-07T12:00:58.904] [DEBUG] debug-file - Update task entry:default@BuildJS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader\default cache by regenerate.
+[2026-03-07T12:00:58.905] [DEBUG] debug-file - Update task entry:default@BuildJS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\ResourceTable.txt cache by regenerate.
+[2026-03-07T12:00:58.905] [DEBUG] debug-file - Update task entry:default@BuildJS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\ark_module.json cache by regenerate.
+[2026-03-07T12:00:58.905] [DEBUG] debug-file - Update task entry:default@BuildJS input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\resources\base\profile cache by regenerate.
+[2026-03-07T12:00:58.905] [DEBUG] debug-file - Update task entry:default@BuildJS output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader_out\default\js cache.
+[2026-03-07T12:00:58.905] [DEBUG] debug-file - Incremental task entry:default@BuildJS post-execution cost:3 ms .
+[2026-03-07T12:00:58.906] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@CacheNativeLibs is up-to-date.
+[2026-03-07T12:00:58.906] [DEBUG] debug-file - There is no need to refresh cache, since the incremental task entry:default@GeneratePkgModuleJson is up-to-date.
+[2026-03-07T12:00:58.906] [DEBUG] debug-file - Incremental task entry:default@ProcessCompiledResources post-execution cost:1 ms .
+[2026-03-07T12:00:58.906] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\stripped_native_libs\default cache by regenerate.
+[2026-03-07T12:00:58.906] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\module.json cache by regenerate.
+[2026-03-07T12:00:58.906] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\resources cache by regenerate.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\res\default\resources.index cache by regenerate.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\pack.info cache by regenerate.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader_out\default\ets cache from map.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader_out\default\ets\sourceMaps.map cache by regenerate.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\generated\profile\default\BuildProfile.ets cache by regenerate.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\entry-default-unsigned.hap cache.
+[2026-03-07T12:00:58.907] [DEBUG] debug-file - Update task entry:default@PackageHap output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\source_map\default\sourceMaps.map cache.
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Update task entry:default@PackageHap output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\mapping\sourceMaps.map cache.
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Incremental task entry:default@PackageHap post-execution cost:3 ms .
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Update task entry:default@SignHap input file:C:\Users\hp\.ohos\config\default_NJU_Calendar_Importer_ArkTS_fKNh4q_d7TvD3G1GpQEu3Hgte2R2n_RfvqX31baEYds=.cer cache by regenerate.
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Update task entry:default@SignHap input file:C:\Users\hp\.ohos\config\default_NJU_Calendar_Importer_ArkTS_fKNh4q_d7TvD3G1GpQEu3Hgte2R2n_RfvqX31baEYds=.p7b cache by regenerate.
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Update task entry:default@SignHap input file:C:\Users\hp\.ohos\config\default_NJU_Calendar_Importer_ArkTS_fKNh4q_d7TvD3G1GpQEu3Hgte2R2n_RfvqX31baEYds=.p12 cache by regenerate.
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Update task entry:default@SignHap input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\entry-default-unsigned.hap cache from map.
+[2026-03-07T12:00:58.908] [DEBUG] debug-file - Update task entry:default@SignHap output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\entry-default-signed.hap cache.
+[2026-03-07T12:00:58.909] [DEBUG] debug-file - Incremental task entry:default@SignHap post-execution cost:1 ms .
+[2026-03-07T12:00:58.909] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\loader_out\default\ets\sourceMaps.map cache by regenerate.
+[2026-03-07T12:00:58.909] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol input file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\intermediates\libs\default cache by regenerate.
+[2026-03-07T12:00:58.909] [DEBUG] debug-file - Update task entry:default@CollectDebugSymbol output file:D:\NJU_Calendar_Importer_ArkTS\entry\build\default\outputs\default\symbol cache.
+[2026-03-07T12:00:58.909] [DEBUG] debug-file - Incremental task entry:default@CollectDebugSymbol post-execution cost:1 ms .
+[2026-03-07T12:00:58.936] [DEBUG] debug-file - Cleanup worker 0.
+[2026-03-07T12:00:58.936] [DEBUG] debug-file - Worker 0 has been cleaned up.
+[2026-03-07T12:00:58.936] [DEBUG] debug-file - Current idle worker size: 3.
+[2026-03-07T12:00:58.936] [DEBUG] debug-file - Current resident worker size: 4.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Cleanup worker 1.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Worker 1 has been cleaned up.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Current idle worker size: 2.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Current resident worker size: 4.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Cleanup worker 22.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Worker 22 has been cleaned up.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Current idle worker size: 1.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - Current resident worker size: 4.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - hvigor build process will be closed.
+[2026-03-07T12:00:58.937] [DEBUG] debug-file - java daemon socket close code:1000 reason:close by user
+[2026-03-07T12:00:58.940] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-07T12:00:58.940] [DEBUG] debug-file - session manager: send message to worker process.
+[2026-03-07T12:00:58.940] [DEBUG] debug-file - worker[1] exits with exit code 1.
+[2026-03-07T12:00:58.940] [DEBUG] debug-file - worker[0] exits with exit code 1.
+[2026-03-07T12:00:58.942] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-07T12:00:58.942] [DEBUG] debug-file - watch worker: worker id should be larger than 0. Nothing will be sent to any worker thread.
+[2026-03-07T12:00:58.942] [DEBUG] debug-file - worker[22] exits with exit code 1.

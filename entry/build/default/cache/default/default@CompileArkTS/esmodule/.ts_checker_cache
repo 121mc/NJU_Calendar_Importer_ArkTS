@@ -1586,8 +1586,10 @@
       "error": false
     },
     "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\services\\NjuScheduleService.ets": {
-      "mtimeMs": 1772805185506.0012,
+      "mtimeMs": 1772856007169.6018,
       "children": [
+        "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.security.cryptoFramework.d.ts",
+        "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.util.d.ts",
         "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\models\\Models.ets",
         "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\models\\SchoolType.ets",
         "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\services\\HttpService.ets"
@@ -1595,7 +1597,10 @@
       "parent": [
         "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\pages\\Index.ets"
       ],
-      "error": false
+      "error": true,
+      "errorCodes": [
+        28007
+      ]
     },
     "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\services\\CalendarSyncService.ets": {
       "mtimeMs": 1772805112425.1794,
@@ -1669,7 +1674,8 @@
         "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.base.d.ts"
       ],
       "parent": [
-        "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.security.cert.d.ts"
+        "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.security.cert.d.ts",
+        "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\services\\NjuScheduleService.ets"
       ],
       "error": false
     },
@@ -2190,6 +2196,14 @@
         "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.web.webview.d.ts"
       ],
       "parent": [],
+      "error": false
+    },
+    "C:\\Program Files\\Huawei\\DevEco Studio\\sdk\\default\\openharmony\\ets\\api\\@ohos.util.d.ts": {
+      "mtimeMs": 1768795642000,
+      "children": [],
+      "parent": [
+        "D:\\NJU_Calendar_Importer_ArkTS\\entry\\src\\main\\ets\\services\\NjuScheduleService.ets"
+      ],
       "error": false
     }
   }

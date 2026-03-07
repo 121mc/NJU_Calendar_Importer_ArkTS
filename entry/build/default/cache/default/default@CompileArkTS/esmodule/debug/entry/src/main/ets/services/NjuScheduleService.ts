@@ -1,3 +1,5 @@
+import cryptoFramework from "@ohos:security.cryptoFramework";
+import util from "@ohos:util";
 import { CourseEvent, ScheduleBundle } from "@bundle:com.mc121.njucalendarimporter/entry/ets/models/Models";
 import type { SessionInfo } from "@bundle:com.mc121.njucalendarimporter/entry/ets/models/Models";
 import { SchoolType } from "@bundle:com.mc121.njucalendarimporter/entry/ets/models/SchoolType";
@@ -331,14 +333,39 @@ export class NjuScheduleService {
             .trim();
         return value;
     }
+    // 👇 使用 SHA-1 替换原有的哈希逻辑，与 Flutter 保持完全一致
     private static buildImportKey(prefix: string, title: string, startTime: number, endTime: number, location: string): string {
-        let raw = `${prefix}|${title}|${startTime}|${endTime}|${location}`;
-        let hash = 5381;
-        for (let i = 0; i < raw.length; i++) {
-            hash = ((hash << 5) + hash) + raw.charCodeAt(i);
-            hash = hash & 0x7fffffff;
+        let startIso = NjuScheduleService.toDartIso8601String(startTime);
+        let endIso = NjuScheduleService.toDartIso8601String(endTime);
+        let raw = `${prefix}|${title}|${startIso}|${endIso}|${location}`;
+        try {
+            let md = cryptoFramework.createMd('SHA1');
+            let textEncoder = new util.TextEncoder();
+            let dataBlob: cryptoFramework.DataBlob = { data: textEncoder.encode(raw) };
+            md.updateSync(dataBlob);
+            let digestBlob = md.digestSync();
+            let hexString = '';
+            for (let i = 0; i < digestBlob.data.length; i++) {
+                hexString += digestBlob.data[i].toString(16).padStart(2, '0');
+            }
+            return hexString;
         }
-        return `${prefix}_${hash.toString(16)}`;
+        catch (e) {
+            console.error("SHA-1 计算失败:", e);
+            return `${prefix}_fallback_${Date.now()}`;
+        }
+    }
+    // 👇 新增方法：模拟 Dart 的 DateTime.toIso8601String() 格式 (带三位毫秒)
+    private static toDartIso8601String(timestamp: number): string {
+        let d = new Date(timestamp);
+        let YYYY = d.getFullYear().toString().padStart(4, '0');
+        let MM = (d.getMonth() + 1).toString().padStart(2, '0');
+        let DD = d.getDate().toString().padStart(2, '0');
+        let HH = d.getHours().toString().padStart(2, '0');
+        let mm = d.getMinutes().toString().padStart(2, '0');
+        let ss = d.getSeconds().toString().padStart(2, '0');
+        let mmm = d.getMilliseconds().toString().padStart(3, '0');
+        return `${YYYY}-${MM}-${DD}T${HH}:${mm}:${ss}.${mmm}`;
     }
     private static buildDescription(importKey: string, schoolLabel: string, teacher: string, className: string, campus: string, extraLines: string[]): string {
         let lines: string[] = [];
